@@ -6,29 +6,34 @@
 <title>SANTOS SISTEMAS</title> <!-- Título da aba -->
 <style> /* Inicia CSS visual */
 
+/* === RESET GLOBAL === */
+*{box-sizing:border-box;} /* Padding não aumenta largura em nenhum elemento */
 body{ /* Corpo todo */
-margin:0; /* Tira margem branca */
-font-family:Arial; /* Fonte Arial */
+margin:0; /* Tira margem branca padrão */
+font-family:Arial, Helvetica, sans-serif; /* Fonte Arial */
 background:#0a1931; /* Fundo azul escuro padrão */
 color:#fff; /* Letra branca */
 overflow-x:hidden; /* Não deixa scroll lateral */
 } /* Fecha body */
 
+/* === TOPO === */
 .topo{ /* Barra topo */
-height:62px; /* Altura 62px */
-padding:0 30px; /* Espaço 0 cima/baixo 30 lados */
+min-height:62px; /* Altura mínima 62px cresce se precisar */
+padding:10px 30px; /* Espaço 10 cima/baixo 30 lados */
 display:flex; /* Lado a lado */
 align-items:center; /* Meio vertical */
 justify-content:flex-end; /* Botões direita */
-position:absolute; /* Fica por cima */
+position:fixed; /* Fixa no topo ao rolar */
+top:0; /* Gruda no topo */
+left:0; /* Gruda na esquerda */
 width:100%; /* 100% largura */
-box-sizing:border-box; /* Padding não aumenta largura */
 z-index:20; /* Frente camada 20 */
 background:rgba(10,25,49,0.95); /* Azul quase sólido */
+backdrop-filter:blur(6px); /* Desfoque bonito atrás */
 } /* Fecha topo */
 
 .logo-meio{ /* Div logo + nome centro */
-position:absolute; /* Posição solta */
+position:absolute; /* Posição solta sobre o topo */
 left:50%; /* 50% esquerda meio */
 transform:translateX(-50%); /* Centraliza certinho */
 top:8px; /* Desce 8px sobrepondo igual foto */
@@ -45,12 +50,12 @@ width:96px; /* Largura 96px círculo */
 border-radius:50%; /* Vira círculo */
 background:#d9d9d9; /* Fundo cinza claro */
 padding:4px; /* Espaço interno */
-object-fit:contain; /* Não estica */
+object-fit:contain; /* Não estica imagem */
 box-shadow:0 0 0 4px #fff,0 0 0 6px #e0e0e0,0 8px 20px rgba(0,0,0,0.6); /* Borda branca + cinza + sombra 3D */
-border:2px solid #fff; /* Borda branca */
+border:2px solid #fff; /* Borda branca extra */
 } /* Fecha img */
 .nome-logo{ /* Nome SANTOS SISTEMAS */
-font-size:13px; /* Tamanho 13px */
+font-size:clamp(11px, 1.2vw, 13px); /* Responsivo 11 a 13px */
 font-weight:900; /* Negrito extra forte */
 letter-spacing:2.5px; /* Espaço entre letras */
 text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra preta */
@@ -62,11 +67,12 @@ color:#fff; /* Branco */
 display:flex; /* Lado a lado */
 gap:18px; /* Espaço 18px */
 align-items:center; /* Meio vertical */
+flex-wrap:wrap; /* Quebra linha se faltar espaço */
 } /* Fecha menu */
 .menu-outro-lado a.link{ /* Links CONTATO WHATSAPP */
-color:#ff4d6d; /* Rosa/vermelho claro igual foto */
+color:#ff4d6d; /* Rosa/vermelho claro */
 text-decoration:none; /* Sem sublinhado */
-font-size:10px; /* 10px pequeno igual foto */
+font-size:clamp(9px, 1vw, 10px); /* Responsivo 9 a 10px */
 font-weight:bold; /* Negrito */
 cursor:pointer; /* Mãozinha */
 transition:all .3s; /* Animação suave */
@@ -81,7 +87,7 @@ padding:7px 16px; /* Espaço interno */
 border-radius:5px; /* Arredondado 5px */
 color:#fff!important; /* Branco força */
 text-decoration:none; /* Sem sublinhado */
-font-size:10px; /* 10px */
+font-size:clamp(9px, 1vw, 10px); /* Responsivo */
 font-weight:bold; /* Negrito */
 display:inline-block; /* Pra transform funcionar */
 transition:all .3s; /* Animação */
@@ -91,20 +97,22 @@ transform:scale(1.12) translateY(-3px); /* Aumenta 12% sobe 3px */
 box-shadow:0 8px 20px rgba(255,31,42,.5); /* Sombra vermelha */
 } /* Fecha hover */
 
+/* === CONTEÚDO FUNDO GLOBO === */
 .fundo-globo{ /* Fundo com imagem globo DIA */
 min-height:100vh; /* Altura 100% tela */
-background:linear-gradient(rgba(10,25,49,0.6),rgba(10,25,49,0.75)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000'); /* Degradê azul + imagem terra DIA com Brasil */
+background:linear-gradient(rgba(10,25,49,0.6),rgba(10,25,49,0.75)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000'); /* Degradê azul + imagem terra */
 background-size:cover; /* Cobre tudo */
 background-position:center left; /* Centro esquerda mostra Brasil */
 display:flex; /* Lado a lado */
 align-items:center; /* Meio vertical */
 justify-content:space-between; /* Um esquerda um direita */
-padding:120px 60px 60px; /* 120 cima por logo 60 lados 60 baixo */
-box-sizing:border-box; /* Padding não aumenta */
+padding:140px 60px 60px; /* 140 cima por logo 60 lados 60 baixo */
+gap:40px; /* Espaço entre esquerda e direita */
 } /* Fecha fundo-globo */
 
 .esquerda{ /* Lado esquerdo texto */
 max-width:420px; /* Largura máxima 420px */
+flex:1; /* Ocupa espaço disponível */
 text-align:left; /* Esquerda */
 } /* Fecha esquerda */
 .esquerda h1{ /* Título Controle e Automação */
@@ -113,53 +121,54 @@ line-height:1.1; /* Altura linha 1.1 */
 } /* Fecha h1 */
 .esquerda h1 .vermelho{ /* Parte vermelha */
 color:#ff1a1a; /* Vermelho */
-font-size:32px; /* 32px */
+font-size:clamp(28px, 4vw, 36px); /* Responsivo 28 a 36px */
 font-weight:900; /* Negrito extra */
 display:block; /* Linha própria */
 } /* Fecha vermelho */
 .esquerda h1 .branco{ /* Parte branca Industrial */
 color:#fff; /* Branco */
-font-size:30px; /* 30px */
+font-size:clamp(26px, 3.8vw, 33px); /* Responsivo */
 font-weight:900; /* Negrito */
 display:block; /* Linha própria */
 } /* Fecha branco */
 .esquerda p{ /* Subtítulo pequeno */
-font-size:9px; /* 9px pequeno igual foto */
+font-size:clamp(8px, 0.9vw, 9.5px); /* Responsivo */
 color:#cbd5e1; /* Cinza claro */
 margin-top:12px; /* Espaço cima 12px */
 letter-spacing:0.5px; /* Espaço letras */
 text-transform:uppercase; /* Maiúsculo */
+line-height:1.5; /* Altura linha melhora leitura */
 } /* Fecha p */
 
 .direita{ /* Lado direito serviços */
 max-width:460px; /* Largura máxima 460px */
+flex:1; /* Ocupa espaço */
+width:100%; /* 100% no celular */
 } /* Fecha direita */
-
-.titulo-servicos{ /* TEXTO SELECIONE NOSSOS SERVIÇOS CENTRALIZADO */
-font-size:10px; /* 10px pequeno igual foto */
-letter-spacing:2.5px; /* Espaço 2.5px entre letras igual foto */
-text-align:center; /* CENTRALIZADO EM CIMA DOS BOTÕES - AJUSTADO */
-margin-bottom:18px; /* Espaço baixo 18px pra separar dos botões */
+.titulo-servicos{ /* TEXTO SELECIONE NOSSOS SERVIÇOS */
+font-size:clamp(9px, 1vw, 10px); /* Responsivo */
+letter-spacing:2.5px; /* Espaço entre letras */
+text-align:center; /* CENTRALIZADO */
+margin-bottom:18px; /* Espaço baixo 18px */
 color:#fff; /* Branco */
 font-weight:bold; /* Negrito */
 text-transform:uppercase; /* Maiúsculo */
 } /* Fecha titulo-servicos */
-
-.grid{ /* Grade 3x2 serviços */
+.grid{ /* Grade serviços */
 display:grid; /* Grade */
-grid-template-columns:repeat(3,1fr); /* 3 colunas iguais igual foto */
+grid-template-columns:repeat(3,1fr); /* 3 colunas PC */
 gap:14px; /* Espaço 14px entre botões */
 } /* Fecha grid */
 .card{ /* Cartão serviço */
 background:rgba(15,30,65,0.6); /* Fundo azul transparente 60% */
-border:1.2px solid #3d5bff; /* Borda azul igual foto */
+border:1.2px solid #3d5bff; /* Borda azul */
 border-radius:10px; /* Arredondado 10px */
 padding:18px 10px; /* Espaço interno */
 text-align:center; /* Centro */
 text-decoration:none; /* Sem sublinhado */
 color:#fff; /* Branco */
 transition:all .3s; /* Animação */
-min-height:70px; /* Altura mínima 70px */
+min-height:85px; /* Altura mínima 85px */
 display:flex; /* Coluna */
 flex-direction:column; /* Coluna */
 align-items:center; /* Centro */
@@ -175,32 +184,124 @@ border-color:#ff1a1a; /* Borda vermelha */
 font-size:22px; /* Tamanho 22px */
 } /* Fecha ico */
 .card span.txt{ /* Texto serviço */
-font-size:8.5px; /* 8.5px pequeno igual foto */
+font-size:clamp(8px, 0.9vw, 9px); /* Responsivo */
 font-weight:bold; /* Negrito */
+line-height:1.2; /* Altura linha */
 } /* Fecha txt */
 
-.fundo-popup{ display:none; position:fixed; top:0;left:0; width:100%;height:100%; background:rgba(0,0,0,0.7); z-index:99; align-items:center; justify-content:center; } /* Fundo popup */
-.fundo-popup.ativo{ display:flex; } /* Ativo mostra */
-.popup-box{ background:#fff; color:#0a1931; border-radius:16px; padding:25px 30px; width:320px; text-align:center; } /* Caixa branca */
-.popup-box a.numero{ display:block; margin:12px 0; padding:12px; background:#25d366; color:#fff; text-decoration:none; border-radius:10px; font-weight:bold; } /* Número verde */
-.btn-fechar{ margin-top:10px; padding:8px 18px; background:#0a1931; color:#fff; border:none; border-radius:20px; cursor:pointer; } /* Botão fechar */
+/* === POPUP === */
+.fundo-popup{ /* Fundo popup escuro */
+display:none; /* Escondido */
+position:fixed; /* Fixo na tela */
+top:0; /* Topo 0 */
+left:0; /* Esquerda 0 */
+width:100%; /* Largura 100% */
+height:100%; /* Altura 100% */
+background:rgba(0,0,0,0.7); /* Preto 70% */
+z-index:99; /* Frente 99 */
+align-items:center; /* Centro vertical */
+justify-content:center; /* Centro horizontal */
+padding:20px; /* Espaço borda no celular */
+} /* Fecha fundo-popup */
+.fundo-popup.ativo{ /* Ativo mostra */
+display:flex; /* Mostra flex */
+} /* Fecha ativo */
+.popup-box{ /* Caixa branca */
+background:#fff; /* Branco */
+color:#0a1931; /* Azul escuro texto */
+border-radius:16px; /* Arredondado 16px */
+padding:25px 30px; /* Espaço interno */
+width:100%; /* Responsivo largura */
+max-width:340px; /* Máximo 340px */
+text-align:center; /* Centro */
+} /* Fecha popup-box */
+.popup-box a.numero{ /* Número verde */
+display:block; /* Bloco */
+margin:12px 0; /* Margem 12 cima/baixo */
+padding:12px; /* Espaço interno */
+background:#25d366; /* Verde WhatsApp */
+color:#fff; /* Branco */
+text-decoration:none; /* Sem sublinhado */
+border-radius:10px; /* Arredondado 10px */
+font-weight:bold; /* Negrito */
+} /* Fecha numero */
+.btn-fechar{ /* Botão fechar */
+margin-top:10px; /* Espaço cima 10px */
+padding:8px 18px; /* Espaço interno */
+background:#0a1931; /* Azul escuro */
+color:#fff; /* Branco */
+border:none; /* Sem borda */
+border-radius:20px; /* Arredondado 20px */
+cursor:pointer; /* Mãozinha */
+} /* Fecha btn-fechar */
 
-@media(max-width:900px){ /* Celular até 900px */
-.fundo-globo{ flex-direction:column; padding:140px 20px 40px; gap:30px; } /* Coluna no celular */
-.esquerda{ text-align:center; } /* Centro celular */
-.titulo-servicos{ text-align:center; } /* Mantém centro celular */
-.grid{ grid-template-columns:repeat(2,1fr); } /* 2 colunas celular */
-} /* Fecha media */
+/* === RESPONSIVO TABLET E CELULAR === */
+@media(max-width:900px){ /* Celular e tablet até 900px */
+.topo{ /* Topo no celular */
+justify-content:center; /* Centraliza */
+padding:12px 15px 55px; /* Mais espaço baixo pro logo */
+flex-direction:column; /* Coluna no celular */
+gap:10px; /* Espaço entre menu e logo */
+position:relative; /* Não fixo no celular evita cobrir */
+min-height:auto; /* Altura auto */
+} /* Fecha topo media */
+.logo-meio{ /* Logo no celular */
+position:relative; /* Relativo não absoluto */
+left:auto; /* Tira 50% */
+transform:none; /* Tira centralização */
+top:auto; /* Tira 8px */
+order:-1; /* Logo vai pra cima */
+margin-bottom:5px; /* Espaço baixo */
+} /* Fecha logo-meio media */
+.logo-meio img{ /* Imagem logo celular */
+height:72px; /* Menor 72px no celular */
+width:72px; /* Menor 72px */
+} /* Fecha img media */
+.menu-outro-lado{ /* Menu celular */
+justify-content:center; /* Centro */
+gap:14px; /* Menos espaço */
+} /* Fecha menu media */
+.fundo-globo{ /* Fundo globo celular */
+flex-direction:column; /* Coluna no celular */
+padding:30px 20px 40px; /* Menos padding topo */
+gap:30px; /* Espaço 30px */
+text-align:center; /* Centro */
+min-height:auto; /* Altura auto */
+} /* Fecha fundo-globo media */
+.esquerda{ /* Esquerda celular */
+text-align:center; /* Centro celular */
+max-width:100%; /* 100% largura */
+} /* Fecha esquerda media */
+.grid{ /* Grade celular */
+grid-template-columns:repeat(2,1fr); /* 2 colunas celular */
+gap:12px; /* Espaço 12px */
+} /* Fecha grid media */
+} /* Fecha media 900px */
 
+@media(max-width:480px){ /* Celular pequeno até 480px */
+.grid{ /* Grade celular pequeno */
+gap:10px; /* Espaço 10px */
+} /* Fecha grid */
+.card{ /* Card celular pequeno */
+min-height:75px; /* Altura menor */
+padding:14px 8px; /* Menos padding */
+} /* Fecha card */
+.esquerda h1 .vermelho{ /* Título vermelho pequeno */
+font-size:28px; /* 28px fixo pequeno */
+} /* Fecha vermelho pequeno */
+.esquerda h1 .branco{ /* Título branco pequeno */
+font-size:26px; /* 26px */
+} /* Fecha branco pequeno */
+} /* Fecha media 480px */
 </style> <!-- Fecha CSS -->
 </head> <!-- Fecha head -->
 <body> <!-- Corpo visível -->
 <header class="topo"> <!-- Topo -->
 <a href="index.html" class="logo-meio"><img src="logo.png" alt="SANTOS SISTEMAS"><span class="nome-logo">SANTOS SISTEMAS</span></a> <!-- Logo centro -->
 <nav class="menu-outro-lado"> <!-- Menu direita -->
-<a href="contato.html" class="link">📞 CONTATO</a> <!-- CONTATO abre contato.html -->
+<a href="contato.html" class="link">📞 CONTATO</a> <!-- CONTATO -->
 <a class="link" onclick="abrirPopup()">💬 WHATSAPP</a> <!-- WHATSAPP abre popup -->
-<a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- ORÇAMENTO abre orcamento.html -->
+<a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- ORÇAMENTO -->
 </nav> <!-- Fecha nav -->
 </header> <!-- Fecha header -->
 <div class="fundo-globo"> <!-- Fundo globo imagem terra DIA Brasil -->
@@ -209,7 +310,7 @@ font-weight:bold; /* Negrito */
 <p>DESENVOLVIMENTO DE SISTEMAS INTEGRADOS CLP E SCADA</p> <!-- Subtítulo -->
 </div> <!-- Fecha esquerda -->
 <div class="direita"> <!-- Direita serviços -->
-<div class="titulo-servicos">SELECIONE NOSSOS SERVIÇOS</div> <!-- AGORA CENTRALIZADO EM CIMA DOS BOTÕES -->
+<div class="titulo-servicos">SELECIONE NOSSOS SERVIÇOS</div> <!-- Centralizado em cima -->
 <div class="grid"> <!-- Grade 3x2 -->
 <a href="controle-clp.html" class="card"><span class="ico">⚙️</span><span class="txt">Controle CLP</span></a> <!-- Card 1 -->
 <a href="oit.html" class="card"><span class="ico">🖥️</span><span class="txt">OIT</span></a> <!-- Card 2 -->
@@ -229,8 +330,8 @@ font-weight:bold; /* Negrito */
 </div> <!-- Fecha box -->
 </div> <!-- Fecha fundo -->
 <script> // JS
-function abrirPopup(){document.getElementById('fundoPopup').classList.add('ativo')} // Abre popup
-function fecharPopup(){document.getElementById('fundoPopup').classList.remove('ativo')} // Fecha popup
+function abrirPopup(){document.getElementById('fundoPopup').classList.add('ativo')} // Abre popup adiciona classe ativo
+function fecharPopup(){document.getElementById('fundoPopup').classList.remove('ativo')} // Fecha popup remove classe ativo
 </script> <!-- Fecha script -->
 </body> <!-- Fecha body -->
 </html>
