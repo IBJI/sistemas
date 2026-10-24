@@ -1,37 +1,289 @@
 <!DOCTYPE html> <!-- HTML5 moderno -->
 <html lang="pt-br"> <!-- Idioma português -->
 <head> <!-- Configurações invisíveis -->
-<meta charset="utf-8"> <!-- Libera acentos ç ã -->
+<meta charset="utf-8"> <!-- Libera acentos -->
 <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsivo celular -->
-<title>PYTHON E O SCADA - SANTOS SISTEMAS</title> <!-- Título da aba -->
-<style> /* Inicia CSS visual */
-body{ margin:0; font-family:Arial; background:#0a1931; color:#fff; } /* Corpo */
-.topo{ height:68px; padding:0 30px; display:flex; align-items:center; justify-content:center; position:absolute; width:100%; box-sizing:border-box; z-index:20; background:#0a1931; } /* Barra topo */
-.logo-meio{ position:absolute; left:50%; transform:translateX(-50%); top:8px; z-index:30; display:flex; flex-direction:column; align-items:center; gap:8px; text-decoration:none; } /* Logo meio */
-.logo-meio img{ height:108px; width:108px; border-radius:50%; background:#d9d9d9; padding:4px; object-fit:contain; box-shadow:0 0 0 5px #fff,0 0 0 7px #e0e0e0,0 8px 20px rgba(0,0,0,0.6); border:2px solid #fff; } /* Imagem logo */
-.nome-logo{ font-size:18px; font-weight:900; text-transform:uppercase; color:#fff; letter-spacing:2.5px; text-shadow:0 2px 6px rgba(0,0,0,0.9); white-space:nowrap; } /* Nome */
-.menu-outro-lado{ margin-left:auto; display:flex; gap:20px; align-items:center; } /* Caixa botões direita */
-.menu-outro-lado a.link{ color:#cbd5e1; text-decoration:none; font-size:12px; font-weight:bold; transition:all .3s; cursor:pointer; } /* Links */
-.menu-outro-lado a.link:hover{ transform:scale(1.12) translateY(-3px); color:#fff; } /* Hover */
-.btn-orcamento{ background:#ff1f2a; padding:9px 20px; border-radius:6px; color:#fff!important; text-decoration:none; font-size:12px; font-weight:bold; transition:all .3s; display:inline-block; } /* Botão vermelho */
-.btn-orcamento:hover{ transform:scale(1.12) translateY(-4px); box-shadow:0 10px 25px rgba(255,31,42,.5); } /* Hover orçamento */
-.btn-voltar{ position:absolute; top:14px; left:20px; padding:8px 18px; background:#0033cc; color:#fff; text-decoration:none; border-radius:20px; font-weight:bold; font-size:13px; z-index:25; transition:all .3s; } /* Botão voltar */
-.btn-voltar:hover{ transform:scale(1.12) translateY(-3px); background:#0022aa; } /* Hover voltar */
-.conteudo{ padding:160px 40px 60px; max-width:900px; margin:0 auto; text-align:center; } /* Caixa central */
-.conteudo h1{ font-size:28px; color:#ff1a1a; letter-spacing:2px; } /* Título */
-.lista-servico{ text-align:left; display:inline-block; margin:20px 0; background:rgba(255,255,255,.05); border:1.5px solid #3d5bff; border-radius:12px; padding:20px 30px; } /* Lista */
-.lista-servico li{ margin:8px 0; font-size:14px; } /* Item */
-.pesquisa-baixo{ display:flex; align-items:center; gap:6px; margin:30px auto 0; width:320px; height:44px; background:rgba(255,255,255,.08); border:1.5px solid #3d5bff; border-radius:8px; padding:5px 8px; transition:all .3s; } /* Pesquisa */
-.pesquisa-baixo:hover{ transform:scale(1.08) translateY(-3px); box-shadow:0 10px 25px rgba(61,91,255,.4); } /* Hover pesquisa */
-.pesquisa-baixo input{ flex:1; background:transparent; border:none; color:#fff; outline:none; padding:6px; } /* Input */
-.pesquisa-baixo input::placeholder{ color:#aaa } /* Placeholder */
-.pesquisa-baixo button{ background:#0033cc; color:#fff; border:none; border-radius:6px; padding:8px 14px; cursor:pointer; transition:all .3s; } /* Botão lupa */
-.pesquisa-baixo button:hover{ background:#0022aa; transform:scale(1.1); } /* Hover lupa */
-.fundo-popup{ display:none; position:fixed; top:0;left:0; width:100%;height:100%; background:rgba(0,0,0,0.7); z-index:99; align-items:center; justify-content:center; } /* Fundo popup */
-.fundo-popup.ativo{ display:flex; } /* Ativo */
-.popup-box{ background:#fff; color:#0a1931; border-radius:16px; padding:25px 30px; width:320px; text-align:center; } /* Caixa branca */
-.popup-box a.numero{ display:block; margin:12px 0; padding:12px; background:#25d366; color:#fff; text-decoration:none; border-radius:10px; font-weight:bold; } /* Número */
-.btn-fechar{ margin-top:10px; padding:8px 18px; background:#0a1931; color:#fff; border:none; border-radius:20px; cursor:pointer; } /* Fechar */
+<title>PYTHON E O SCADA - SANTOS SISTEMAS</title> <!-- Título aba -->
+<style> /* Inicia CSS */
+*{box-sizing:border-box;} /* Padding não aumenta largura */
+body{ /* Corpo todo */
+margin:0; /* Tira margem branca */
+font-family:Arial, sans-serif; /* Fonte Arial */
+background:#0a1931; /* Azul escuro */
+color:#fff; /* Letra branca */
+overflow-x:hidden; /* Sem scroll lateral */
+} /* Fecha body */
+
+/* === TOPO === */
+.topo{ /* Barra topo */
+min-height:68px; /* Altura mínima 68px */
+padding:10px 30px; /* Espaço interno */
+display:flex; /* Lado a lado */
+align-items:center; /* Meio vertical */
+justify-content:center; /* Centro */
+position:fixed; /* Fixa no topo */
+top:0;left:0; /* Topo 0 esquerda 0 */
+width:100%; /* 100% largura */
+z-index:20; /* Camada 20 */
+background:rgba(10,25,49,0.96); /* Azul quase sólido */
+backdrop-filter:blur(6px); /* Desfoque */
+} /* Fecha topo */
+.btn-voltar{ /* Botão VOLTAR esquerda */
+position:absolute; /* Posição solta */
+top:14px; /* 14px topo */
+left:20px; /* 20px esquerda */
+padding:8px 18px; /* Espaço interno */
+background:#0033cc; /* Azul */
+color:#fff; /* Branco */
+text-decoration:none; /* Sem sublinhado */
+border-radius:20px; /* Redondo */
+font-weight:bold; /* Negrito */
+font-size:clamp(11px,1vw,13px); /* Responsivo */
+z-index:25; /* Frente 25 */
+transition:all .3s; /* Animação */
+} /* Fecha btn-voltar */
+.btn-voltar:hover{ /* Hover voltar */
+transform:scale(1.12) translateY(-3px); /* Aumenta sobe */
+background:#0022aa; /* Azul escuro */
+box-shadow:0 8px 20px rgba(0,51,204,0.5); /* Sombra azul */
+} /* Fecha hover */
+
+.logo-meio{ /* Logo + nome centro */
+position:absolute; /* Posição solta */
+left:50%; /* Meio tela */
+transform:translateX(-50%); /* Centraliza certinho */
+top:8px; /* Desce 8px sobrepondo */
+z-index:30; /* Frente tudo */
+display:flex; /* Coluna */
+flex-direction:column; /* Um em cima do outro */
+align-items:center; /* Centraliza */
+gap:8px; /* Espaço 8px */
+text-decoration:none; /* Sem sublinhado */
+} /* Fecha logo-meio */
+.logo-meio img{ /* Imagem logo */
+height:clamp(72px,8vw,108px); /* Responsivo 72 a 108px */
+width:clamp(72px,8vw,108px); /* Responsivo */
+border-radius:50%; /* Círculo */
+background:#d9d9d9; /* Cinza claro */
+padding:4px; /* Espaço interno */
+object-fit:contain; /* Não estica */
+box-shadow:0 0 0 5px #fff,0 0 0 7px #e0e0e0,0 8px 20px rgba(0,0,0,0.6); /* Bordas + sombra 3D */
+border:2px solid #fff; /* Borda branca */
+} /* Fecha img */
+.nome-logo{ /* Nome SANTOS SISTEMAS */
+font-size:clamp(11px,1.5vw,18px); /* Responsivo */
+font-weight:900; /* Negrito extra */
+text-transform:uppercase; /* Maiúsculo */
+color:#fff; /* Branco */
+letter-spacing:2.5px; /* Espaço letras */
+text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra */
+white-space:nowrap; /* Uma linha só */
+} /* Fecha nome */
+
+.menu-outro-lado{ /* Botões direita */
+margin-left:auto; /* Empurra direita */
+display:flex; /* Lado a lado */
+gap:20px; /* Espaço 20px */
+align-items:center; /* Meio vertical */
+flex-wrap:wrap; /* Quebra linha se precisar */
+} /* Fecha menu */
+.menu-outro-lado a.link{ /* Links CONTATO WHATSAPP */
+color:#cbd5e1; /* Cinza claro */
+text-decoration:none; /* Sem sublinhado */
+font-size:clamp(10px,1vw,12px); /* Responsivo */
+font-weight:bold; /* Negrito */
+transition:all .3s; /* Animação */
+cursor:pointer; /* Mãozinha */
+display:flex; /* Ícone + texto lado */
+align-items:center; /* Centro */
+gap:5px; /* Espaço 5px */
+} /* Fecha link */
+.menu-outro-lado a.link:hover{ /* Hover */
+transform:scale(1.12) translateY(-3px); /* Aumenta sobe */
+color:#fff; /* Branco */
+text-shadow:0 0 8px rgba(255,255,255,0.7); /* Brilho */
+} /* Fecha hover */
+.btn-orcamento{ /* Botão vermelho */
+background:#ff1f2a; /* Vermelho */
+padding:9px 20px; /* Espaço interno */
+border-radius:6px; /* Arredondado */
+color:#fff!important; /* Branco força */
+text-decoration:none; /* Sem sublinhado */
+font-size:clamp(10px,1vw,12px); /* Responsivo */
+font-weight:bold; /* Negrito */
+transition:all .3s; /* Animação */
+display:inline-block; /* Pra transform */
+} /* Fecha orçamento */
+.btn-orcamento:hover{ /* Hover orçamento */
+transform:scale(1.12) translateY(-4px); /* Aumenta sobe */
+box-shadow:0 10px 25px rgba(255,31,42,.5); /* Sombra vermelha */
+background:#ff2f3a; /* Vermelho claro */
+} /* Fecha hover */
+
+/* === CONTEÚDO === */
+.conteudo{ /* Caixa central */
+padding:160px 40px 60px; /* 160 cima 40 lados 60 baixo */
+max-width:900px; /* Largura máxima 900px */
+margin:0 auto; /* Centraliza */
+text-align:center; /* Centro */
+width:100%; /* 100% celular */
+} /* Fecha conteudo */
+.conteudo h1{ /* Título PYTHON E SCADA */
+font-size:clamp(20px,4vw,28px); /* Responsivo 20 a 28px */
+color:#ff1a1a; /* Vermelho */
+letter-spacing:2px; /* Espaço letras */
+margin-bottom:10px; /* Espaço baixo */
+line-height:1.2; /* Altura linha */
+} /* Fecha h1 */
+.conteudo p{ /* Parágrafo */
+font-size:clamp(14px,1.5vw,16px); /* Responsivo */
+color:#cbd5e1; /* Cinza claro */
+line-height:1.6; /* Altura linha */
+margin:12px 0; /* Espaço 12px */
+} /* Fecha p */
+.lista-servico{ /* Lista serviços */
+text-align:left; /* Esquerda dentro */
+display:inline-block; /* Bloco centralizado */
+margin:20px 0; /* Espaço 20px */
+background:rgba(255,255,255,.05); /* Fundo 5% */
+border:1.5px solid #3d5bff; /* Borda azul */
+border-radius:12px; /* Arredondado */
+padding:20px 30px; /* Espaço interno */
+width:100%; /* 100% celular */
+max-width:550px; /* Máximo 550px */
+} /* Fecha lista */
+.lista-servico li{ /* Item lista */
+margin:8px 0; /* Espaço 8px */
+font-size:clamp(13px,1.4vw,14px); /* Responsivo */
+} /* Fecha li */
+
+/* === PESQUISA === */
+.pesquisa-baixo{ /* Caixa pesquisa */
+display:flex; /* Input + lupa lado */
+align-items:center; /* Meio vertical */
+gap:6px; /* Espaço 6px */
+margin:30px auto 0; /* 30 cima auto lados */
+width:100%; /* 100% responsivo */
+max-width:320px; /* Máximo 320px */
+height:44px; /* Altura 44px */
+background:rgba(255,255,255,.08); /* Fundo 8% */
+border:1.5px solid #3d5bff; /* Borda azul */
+border-radius:8px; /* Arredondado */
+padding:5px 8px; /* Espaço interno */
+transition:all .3s; /* Animação */
+} /* Fecha pesquisa */
+.pesquisa-baixo:hover{ /* Hover pesquisa */
+transform:scale(1.05) translateY(-3px); /* Aumenta sobe */
+box-shadow:0 10px 25px rgba(61,91,255,.4); /* Sombra azul */
+border-color:#6d8cff; /* Borda clara */
+background:rgba(255,255,255,0.12); /* Fundo mais claro */
+} /* Fecha hover */
+.pesquisa-baixo input{ /* Campo digitar */
+flex:1; /* Ocupa espaço */
+background:transparent; /* Transparente */
+border:none; /* Sem borda */
+color:#fff; /* Branco */
+outline:none; /* Tira borda azul */
+padding:6px; /* Espaço */
+min-width:0; /* Não estoura celular */
+font-size:14px; /* Tamanho */
+} /* Fecha input */
+.pesquisa-baixo input::placeholder{ /* Exemplo */
+color:#aaa; /* Cinza */
+} /* Fecha placeholder */
+.pesquisa-baixo button{ /* Botão lupa */
+background:#0033cc; /* Azul */
+color:#fff; /* Branco */
+border:none; /* Sem borda */
+border-radius:6px; /* Arredondado */
+padding:8px 14px; /* Tamanho */
+cursor:pointer; /* Mãozinha */
+transition:all .3s; /* Animação */
+flex-shrink:0; /* Não esmaga */
+} /* Fecha button */
+.pesquisa-baixo button:hover{ /* Hover lupa */
+background:#0022aa; /* Azul escuro */
+transform:scale(1.1); /* Aumenta */
+} /* Fecha hover */
+
+/* === POPUP === */
+.fundo-popup{ /* Fundo escuro popup */
+display:none; /* Escondido */
+position:fixed; /* Fixo tela */
+top:0;left:0; /* Topo 0 esquerda 0 */
+width:100%;height:100%; /* 100% tela */
+background:rgba(0,0,0,0.7); /* Preto 70% */
+z-index:99; /* Frente tudo */
+align-items:center; /* Meio vertical */
+justify-content:center; /* Meio horizontal */
+padding:20px; /* Espaço borda celular */
+} /* Fecha fundo-popup */
+.fundo-popup.ativo{ /* Ativo mostra */
+display:flex; /* Mostra flex */
+} /* Fecha ativo */
+.popup-box{ /* Caixa branca */
+background:#fff; /* Branco */
+color:#0a1931; /* Azul escuro */
+border-radius:16px; /* Arredondado */
+padding:25px 30px; /* Espaço */
+width:100%; /* Responsivo */
+max-width:340px; /* Máximo 340px */
+text-align:center; /* Centro */
+box-shadow:0 20px 50px rgba(0,0,0,0.5); /* Sombra */
+} /* Fecha popup-box */
+.popup-box a.numero{ /* Número verde */
+display:block; /* Bloco */
+margin:12px 0; /* Espaço 12px */
+padding:12px; /* Espaço */
+background:#25d366; /* Verde WhatsApp */
+color:#fff; /* Branco */
+text-decoration:none; /* Sem sublinhado */
+border-radius:10px; /* Arredondado */
+font-weight:bold; /* Negrito */
+} /* Fecha numero */
+.btn-fechar{ /* Botão fechar */
+margin-top:10px; /* Espaço cima */
+padding:8px 18px; /* Espaço */
+background:#0a1931; /* Azul escuro */
+color:#fff; /* Branco */
+border:none; /* Sem borda */
+border-radius:20px; /* Redondo */
+cursor:pointer; /* Mãozinha */
+} /* Fecha btn-fechar */
+
+/* === RESPONSIVO === */
+@media(max-width:900px){ /* Tablet e celular até 900px */
+.topo{ /* Topo celular */
+min-height:auto; /* Altura auto */
+flex-direction:column; /* Coluna */
+padding:12px 15px 15px; /* Padding menor */
+gap:10px; /* Espaço 10px */
+position:relative; /* Relativo não fixo */
+justify-content:center; /* Centro */
+} /* Fecha topo media */
+.logo-meio{ /* Logo celular */
+position:relative; /* Relativo não absoluto */
+left:auto; /* Tira 50% */
+transform:none; /* Tira centraliza */
+top:auto; /* Tira 8px */
+order:-1; /* Vai pra cima */
+} /* Fecha logo-meio media */
+.menu-outro-lado{ /* Menu celular */
+margin-left:0; /* Tira empurra direita */
+justify-content:center; /* Centro */
+gap:14px; /* Menos espaço */
+} /* Fecha menu media */
+.btn-voltar{ /* Voltar celular */
+position:relative; /* Relativo */
+top:auto; /* Tira topo */
+left:auto; /* Tira esquerda */
+order:1; /* Vai pra baixo */
+margin-top:5px; /* Espaço cima */
+} /* Fecha voltar media */
+.conteudo{ /* Conteúdo celular */
+padding:30px 20px 40px; /* 30 cima 20 lados 40 baixo */
+} /* Fecha conteudo media */
+} /* Fecha media 900px */
 </style> <!-- Fecha CSS -->
 </head> <!-- Fecha head -->
 <body> <!-- Corpo visível -->
@@ -42,9 +294,9 @@ body{ margin:0; font-family:Arial; background:#0a1931; color:#fff; } /* Corpo */
 <span class="nome-logo">SANTOS SISTEMAS</span> <!-- Nome -->
 </a> <!-- Fecha logo -->
 <nav class="menu-outro-lado"> <!-- Menu -->
-<a href="contato.html" class="link">📞 CONTATO</a> <!-- AJUSTADO contato.html -->
-<a class="link" onclick="abrirPopup()">💬 WHATSAPP</a> <!-- AJUSTADO popup -->
-<a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- AJUSTADO orcamento.html -->
+<a href="contato.html" class="link">📞 CONTATO</a> <!-- Abre contato.html -->
+<a class="link" onclick="abrirPopup()">💬 WHATSAPP</a> <!-- Abre popup -->
+<a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- Abre orcamento.html -->
 </nav> <!-- Fecha nav -->
 </header> <!-- Fecha header -->
 <main class="conteudo"> <!-- Conteúdo -->
@@ -73,10 +325,16 @@ body{ margin:0; font-family:Arial; background:#0a1931; color:#fff; } /* Corpo */
 </div> <!-- Fecha box -->
 </div> <!-- Fecha fundo -->
 <script> // JS
-function buscar(){ let t=document.getElementById('pesquisa').value.toLowerCase(); if(t.includes('python'))location.href='python-e-scada.html'; else if(t.includes('scada'))location.href='scada.html'; else if(t.includes('clp'))location.href='controle-clp.html'; else if(t!='')alert('Serviço não encontrado: '+t); } // Função buscar
+function buscar(){ // Função buscar
+let t=document.getElementById('pesquisa').value.toLowerCase(); // Pega valor digitado minúsculo
+if(t.includes('python'))location.href='python-e-scada.html'; // Se python fica aqui
+else if(t.includes('scada'))location.href='scada.html'; // Se scada vai scada
+else if(t.includes('clp'))location.href='controle-clp.html'; // Se clp vai clp
+else if(t!='')alert('Serviço não encontrado: '+t); // Se não vazio alerta
+} // Fecha buscar
 document.getElementById('pesquisa').addEventListener('keydown',e=>{if(e.key==='Enter')buscar()}); // Enter chama buscar
-function abrirPopup(){ document.getElementById('fundoPopup').classList.add('ativo'); } // Abrir popup
-function fecharPopup(){ document.getElementById('fundoPopup').classList.remove('ativo'); } // Fechar popup
+function abrirPopup(){ document.getElementById('fundoPopup').classList.add('ativo'); } // Abrir popup add ativo
+function fecharPopup(){ document.getElementById('fundoPopup').classList.remove('ativo'); } // Fechar popup remove ativo
 </script> <!-- Fecha script -->
 </body> <!-- Fecha body -->
 </html>

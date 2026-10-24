@@ -1,19 +1,98 @@
-<!DOCTYPE html>
-<html lang="pt-br">
-<head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>CONTATO - SANTOS SISTEMAS</title>
-<style>
-body{margin:0;font-family:Arial;background:#0a1931;color:#fff}
-.topo{height:68px;padding:0 30px;display:flex;align-items:center;justify-content:center;position:absolute;width:100%;box-sizing:border-box;z-index:20;background:#0a1931}
-.logo-meio{position:absolute;left:50%;transform:translateX(-50%);top:8px;z-index:30;display:flex;flex-direction:column;align-items:center;gap:8px;text-decoration:none}
-.logo-meio img{height:108px;width:108px;border-radius:50%;background:#d9d9d9;padding:4px;object-fit:contain;box-shadow:0 0 0 5px #fff,0 0 0 7px #e0e0e0,0 8px 20px rgba(0,0,0,0.6);border:2px solid #fff}
-.nome-logo{font-size:18px;font-weight:900;letter-spacing:2.5px;text-shadow:0 2px 6px rgba(0,0,0,0.9);white-space:nowrap;color:#fff}
-.btn-voltar{position:absolute;top:14px;left:20px;padding:8px 18px;background:#0033cc;color:#fff;text-decoration:none;border-radius:20px;font-weight:bold;font-size:13px;z-index:25;transition:all .3s}
-.btn-voltar:hover{transform:scale(1.12) translateY(-3px);background:#0022aa}
-.conteudo{padding:150px 20px 60px;max-width:700px;margin:0 auto}
-.conteudo h1{text-align:center;font-size:30px;color:#ff1a1a;letter-spacing:2px}
+<!DOCTYPE html> <!-- HTML5 moderno -->
+<html lang="pt-br"> <!-- Idioma português -->
+<head> <!-- Configurações invisíveis -->
+<meta charset="utf-8"> <!-- Libera acentos ç ã -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsivo celular -->
+<title>CONTATO - SANTOS SISTEMAS</title> <!-- Título aba -->
+<style> /* Inicia CSS visual */
+*{box-sizing:border-box;} /* Padding não aumenta largura */
+body{ /* Corpo todo */
+margin:0; /* Tira margem branca */
+font-family:Arial, sans-serif; /* Fonte Arial */
+background:#0a1931; /* Azul escuro */
+color:#fff; /* Letra branca */
+overflow-x:hidden; /* Sem scroll lateral */
+} /* Fecha body */
+
+/* === TOPO === */
+.topo{ /* Barra topo */
+min-height:68px; /* Altura mínima 68px */
+padding:10px 30px; /* Espaço interno */
+display:flex; /* Lado a lado */
+align-items:center; /* Meio vertical */
+justify-content:center; /* Centro */
+position:fixed; /* Fixa no topo */
+top:0;left:0; /* Topo 0 esquerda 0 */
+width:100%; /* 100% largura */
+z-index:20; /* Camada 20 */
+background:rgba(10,25,49,0.96); /* Azul quase sólido */
+backdrop-filter:blur(6px); /* Desfoque bonito */
+} /* Fecha topo */
+.logo-meio{ /* Div logo + nome centro */
+position:absolute; /* Posição solta */
+left:50%; /* Meio tela */
+transform:translateX(-50%); /* Centraliza certinho */
+top:8px; /* Desce 8px sobrepondo */
+z-index:30; /* Frente tudo */
+display:flex; /* Coluna */
+flex-direction:column; /* Um em cima do outro */
+align-items:center; /* Centro */
+gap:8px; /* Espaço 8px */
+text-decoration:none; /* Sem sublinhado */
+} /* Fecha logo-meio */
+.logo-meio img{ /* Imagem logo */
+height:clamp(72px,8vw,108px); /* Responsivo 72 a 108px */
+width:clamp(72px,8vw,108px); /* Responsivo */
+border-radius:50%; /* Círculo */
+background:#d9d9d9; /* Cinza claro */
+padding:4px; /* Espaço interno */
+object-fit:contain; /* Não estica */
+box-shadow:0 0 0 5px #fff,0 0 0 7px #e0e0e0,0 8px 20px rgba(0,0,0,0.6); /* Bordas + sombra 3D */
+border:2px solid #fff; /* Borda branca */
+} /* Fecha img */
+.nome-logo{ /* Nome SANTOS SISTEMAS */
+font-size:clamp(11px,1.5vw,18px); /* Responsivo */
+font-weight:900; /* Negrito extra */
+letter-spacing:2.5px; /* Espaço letras */
+text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra */
+white-space:nowrap; /* Uma linha só */
+color:#fff; /* Branco */
+} /* Fecha nome-logo */
+.btn-voltar{ /* Botão VOLTAR esquerda */
+position:absolute; /* Posição solta */
+top:14px; /* 14px topo */
+left:20px; /* 20px esquerda */
+padding:8px 18px; /* Espaço interno */
+background:#0033cc; /* Azul */
+color:#fff; /* Branco */
+text-decoration:none; /* Sem sublinhado */
+border-radius:20px; /* Redondo */
+font-weight:bold; /* Negrito */
+font-size:clamp(11px,1vw,13px); /* Responsivo */
+z-index:25; /* Frente 25 */
+transition:all .3s; /* Animação */
+} /* Fecha btn-voltar */
+.btn-voltar:hover{ /* Hover voltar */
+transform:scale(1.12) translateY(-3px); /* Aumenta sobe */
+background:#0022aa; /* Azul escuro */
+box-shadow:0 8px 20px rgba(0,51,204,0.5); /* Sombra azul */
+} /* Fecha hover */
+
+/* === CONTEÚDO === */
+.conteudo{ /* Caixa central */
+padding:160px 20px 60px; /* 160 cima por logo 20 lados 60 baixo */
+max-width:700px; /* Largura máxima 700px */
+margin:0 auto; /* Centraliza */
+width:100%; /* 100% celular */
+} /* Fecha conteudo */
+.conteudo h1{ /* Título CONTATO */
+text-align:center; /* Centro */
+font-size:clamp(24px,4vw,30px); /* Responsivo 24 a 30px */
+color:#ff1a1a; /* Vermelho */
+letter-spacing:2px; /* Espaço letras */
+margin-bottom:15px; /* Espaço baixo */
+line-height:1.2; /* Altura linha */
+} /* Fecha h1 */
 .box{ /* Caixa contato */
 background:rgba(255,255,255,0.05); /* Fundo 5% */
 border:1.5px solid #3d5bff; /* Borda azul */
@@ -22,48 +101,101 @@ padding:25px 30px; /* Espaço interno */
 margin-top:20px; /* Espaço topo */
 text-align:left; /* Esquerda */
 line-height:1.8; /* Altura linha */
+width:100%; /* 100% responsivo */
 } /* Fecha box */
 .box h3{ /* Título dentro box */
 color:#ff1a1a; /* Vermelho */
 margin:20px 0 8px; /* Espaço */
-font-size:16px; /* 16px */
+font-size:clamp(14px,2vw,16px); /* Responsivo */
 } /* Fecha h3 */
+.box h3:first-child{ /* Primeiro h3 */
+margin-top:0; /* Tira margem topo primeiro */
+} /* Fecha first-child */
+.box p{ /* Parágrafo dentro box */
+margin:6px 0; /* Espaço 6px */
+font-size:clamp(13px,1.5vw,15px); /* Responsivo */
+word-break:break-word; /* Quebra email grande no celular */
+} /* Fecha p box */
 .box a{ /* Links dentro box */
 color:#25d366; /* Verde WhatsApp */
 text-decoration:none; /* Sem sublinhado */
 font-weight:bold; /* Negrito */
+transition:all .3s; /* Animação */
 } /* Fecha a */
-</style>
-</head>
-<body>
-<header class="topo">
-<a href="index.html" class="btn-voltar">⬅ VOLTAR</a>
-<a href="index.html" class="logo-meio"><img src="logo.png" alt="SANTOS SISTEMAS"><span class="nome-logo">SANTOS SISTEMAS</span></a>
-</header>
-<main class="conteudo">
-<h1>CONTATO</h1>
-<div class="box">
-<h3>📞 Telefone / WhatsApp</h3>
-<p>Comercial: <a href="https://wa.me/5563981301747">(63) 98130-1747</a></p>
-<p>Suporte: (63) 98130-1747</p>
+.box a:hover{ /* Hover link */
+color:#fff; /* Branco */
+text-decoration:underline; /* Sublinhado */
+} /* Fecha hover a */
 
-<h3>📧 Email</h3>
-<p>contato@santossistemas.com.br</p>
-<p>suporte@santossistemas.com.br</p>
+/* === RESPONSIVO === */
+@media(max-width:900px){ /* Tablet e celular até 900px */
+.topo{ /* Topo celular */
+min-height:auto; /* Altura auto */
+flex-direction:column; /* Coluna */
+padding:12px 15px 15px; /* Padding menor */
+gap:10px; /* Espaço 10px */
+position:relative; /* Relativo não fixo */
+justify-content:center; /* Centro */
+} /* Fecha topo media */
+.logo-meio{ /* Logo celular */
+position:relative; /* Relativo não absoluto */
+left:auto; /* Tira 50% */
+transform:none; /* Tira centraliza */
+top:auto; /* Tira 8px */
+order:-1; /* Vai pra cima */
+} /* Fecha logo-meio media */
+.btn-voltar{ /* Voltar celular */
+position:relative; /* Relativo */
+top:auto; /* Tira topo */
+left:auto; /* Tira esquerda */
+order:1; /* Vai pra baixo */
+margin-top:5px; /* Espaço cima */
+} /* Fecha voltar media */
+.conteudo{ /* Conteúdo celular */
+padding:30px 15px 40px; /* 30 cima 15 lados 40 baixo */
+} /* Fecha conteudo media */
+.box{ /* Box celular */
+padding:20px 18px; /* Menos padding */
+border-radius:12px; /* Menos arredondado */
+} /* Fecha box media */
+} /* Fecha media 900px */
 
-<h3>🕒 Horário de Atendimento</h3>
-<p>Segunda a Sexta: 08:00 às 18:00</p>
-<p>Sábado: 08:00 às 12:00</p>
-<p>Domingo: Fechado - Plantão WhatsApp</p>
-
-<h3>📅 Dias de Atendimento</h3>
-<p>Atendimento presencial: Seg a Sex</p>
-<p>Plantão emergência: 24h via WhatsApp</p>
-
-<h3>📍 Endereço</h3>
-<p>Araguaína - TO - Brasil</p>
-<p>Atendemos todo o Brasil via remoto e presencial</p>
-</div>
-</main>
-</body>
+@media(max-width:480px){ /* Celular pequeno até 480px */
+.conteudo h1{ /* Título pequeno */
+font-size:22px; /* 22px fixo */
+letter-spacing:1px; /* Menos espaço */
+} /* Fecha h1 pequeno */
+} /* Fecha media 480px */
+</style> <!-- Fecha CSS -->
+</head> <!-- Fecha head -->
+<body> <!-- Corpo visível -->
+<header class="topo"> <!-- Topo -->
+<a href="index.html" class="btn-voltar">⬅ VOLTAR</a> <!-- Botão voltar index -->
+<a href="index.html" class="logo-meio"> <!-- Logo centro -->
+<img src="logo.png" alt="SANTOS SISTEMAS"> <!-- Imagem logo -->
+<span class="nome-logo">SANTOS SISTEMAS</span> <!-- Nome logo -->
+</a> <!-- Fecha logo-meio -->
+</header> <!-- Fecha header -->
+<main class="conteudo"> <!-- Conteúdo principal -->
+<h1>CONTATO</h1> <!-- Título CONTATO -->
+<div class="box"> <!-- Caixa contato -->
+<h3>📞 Telefone / WhatsApp</h3> <!-- Título telefone -->
+<p>Comercial: <a href="https://wa.me/5563981301747">(63) 98130-1747</a></p> <!-- Comercial link WhatsApp -->
+<p>Suporte: (63) 98130-1747</p> <!-- Suporte -->
+<h3>📧 Email</h3> <!-- Título email -->
+<p>contato@santossistemas.com.br</p> <!-- Email contato -->
+<p>suporte@santossistemas.com.br</p> <!-- Email suporte -->
+<h3>🕒 Horário de Atendimento</h3> <!-- Título horário -->
+<p>Segunda a Sexta: 08:00 às 18:00</p> <!-- Seg a Sex -->
+<p>Sábado: 08:00 às 12:00</p> <!-- Sábado -->
+<p>Domingo: Fechado - Plantão WhatsApp</p> <!-- Domingo -->
+<h3>📅 Dias de Atendimento</h3> <!-- Título dias -->
+<p>Atendimento presencial: Seg a Sex</p> <!-- Presencial -->
+<p>Plantão emergência: 24h via WhatsApp</p> <!-- Plantão -->
+<h3>📍 Endereço</h3> <!-- Título endereço -->
+<p>Araguaína - TO - Brasil</p> <!-- Cidade -->
+<p>Atendemos todo o Brasil via remoto e presencial</p> <!-- Atendimento Brasil -->
+</div> <!-- Fecha box -->
+</main> <!-- Fecha main -->
+</body> <!-- Fecha body -->
 </html>
