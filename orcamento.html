@@ -1,0 +1,286 @@
+<!DOCTYPE html> <!-- HTML5 moderno -->
+<html lang="pt-br"> <!-- Idioma português -->
+<head> <!-- Configurações invisíveis -->
+<meta charset="utf-8"> <!-- Libera acentos ç ã -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsivo celular -->
+<title>ORÇAMENTO - SANTOS SISTEMAS</title> <!-- Título da aba -->
+<style> /* Inicia CSS visual */
+
+body{ /* Corpo todo */
+margin:0; /* Tira margem branca */
+font-family:Arial; /* Fonte Arial */
+background:#0a1931; /* Fundo azul escuro padrão */
+color:#fff; /* Letra branca */
+} /* Fecha body */
+
+.topo{ /* Barra topo */
+height:68px; /* Altura 68px */
+padding:0 30px; /* Espaço 0 cima/baixo 30 lados */
+display:flex; /* Lado a lado */
+align-items:center; /* Meio vertical */
+justify-content:center; /* Meio horizontal */
+position:absolute; /* Fica por cima */
+width:100%; /* 100% largura */
+box-sizing:border-box; /* Padding não aumenta largura */
+z-index:20; /* Frente camada 20 */
+background:#0a1931; /* Fundo azul */
+} /* Fecha topo */
+
+.logo-meio{ /* Div logo + nome */
+position:absolute; /* Posição solta */
+left:50%; /* 50% esquerda meio */
+transform:translateX(-50%); /* Centraliza certinho */
+top:8px; /* Desce 8px sobrepondo igual foto */
+z-index:30; /* Frente de tudo */
+display:flex; /* Um em cima do outro */
+flex-direction:column; /* Coluna */
+align-items:center; /* Centraliza */
+gap:8px; /* Espaço 8px logo e nome */
+text-decoration:none; /* Tira sublinhado link */
+} /* Fecha logo-meio */
+.logo-meio img{ /* Imagem logo */
+height:108px; /* Altura 108px */
+width:108px; /* Largura 108px círculo */
+border-radius:50%; /* Vira círculo */
+background:#d9d9d9; /* Fundo cinza claro */
+padding:4px; /* Espaço interno */
+object-fit:contain; /* Não estica */
+box-shadow:0 0 0 5px #fff,0 0 0 7px #e0e0e0,0 8px 20px rgba(0,0,0,0.6); /* Borda branca + cinza + sombra 3D */
+border:2px solid #fff; /* Borda branca */
+} /* Fecha img */
+.nome-logo{ /* Nome SANTOS SISTEMAS */
+font-size:18px; /* Tamanho 18px maior */
+font-weight:900; /* Negrito extra forte */
+letter-spacing:2.5px; /* Espaço entre letras */
+text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra preta */
+white-space:nowrap; /* Uma linha só */
+color:#fff; /* Cor branca adicionada pra garantir */
+} /* Fecha nome */
+
+.btn-voltar{ /* Botão VOLTAR esquerda */
+position:absolute; /* Posição fixa */
+top:14px; /* 14px topo */
+left:20px; /* 20px esquerda */
+padding:8px 18px; /* Espaço interno */
+background:#0033cc; /* Azul */
+color:#fff; /* Branco */
+text-decoration:none; /* Sem sublinhado */
+border-radius:20px; /* Bem redondo */
+font-weight:bold; /* Negrito */
+font-size:13px; /* 13px */
+z-index:25; /* Frente */
+transition:all .3s; /* Animação */
+} /* Fecha voltar */
+.btn-voltar:hover{ /* Hover voltar */
+transform:scale(1.12) translateY(-3px); /* Aumenta 12% sobe 3px */
+background:#0022aa; /* Azul escuro */
+} /* Fecha hover */
+
+.conteudo{ /* Caixa central */
+padding:150px 20px 60px; /* 150 cima por causa logo */
+max-width:700px; /* Largura 700px formulário */
+margin:0 auto; /* Centraliza */
+} /* Fecha conteudo */
+.conteudo h1{ /* Título */
+text-align:center; /* Centro */
+font-size:30px; /* 30px */
+color:#ff1a1a; /* Vermelho */
+letter-spacing:2px; /* Espaço letras */
+} /* Fecha h1 */
+.sub{ /* Subtítulo */
+text-align:center; /* Centro */
+color:#cbd5e1; /* Cinza claro */
+font-size:14px; /* 14px */
+margin-bottom:25px; /* Espaço baixo */
+} /* Fecha sub */
+
+.form-box{ /* Caixa formulário */
+background:rgba(255,255,255,0.05); /* Fundo 5% branco transparente */
+border:1.5px solid #3d5bff; /* Borda azul */
+border-radius:16px; /* Arredondado 16px */
+padding:25px; /* Espaço interno */
+box-shadow:0 10px 30px rgba(0,0,0,0.4); /* Sombra */
+} /* Fecha form-box */
+
+label{ /* Rótulo campo */
+display:block; /* Linha própria */
+text-align:left; /* Esquerda */
+font-size:13px; /* 13px */
+font-weight:bold; /* Negrito */
+color:#cbd5e1; /* Cinza claro */
+margin:14px 0 6px 4px; /* Espaço cima 14 baixo 6 */
+} /* Fecha label */
+
+input[type="text"],input[type="tel"],input[type="email"],input[type="url"],textarea{ /* Campos texto */
+width:100%; /* 100% largura caixa */
+padding:12px 14px; /* Espaço interno */
+border-radius:8px; /* Arredondado 8px */
+border:1.5px solid #3d5bff; /* Borda azul */
+background:rgba(255,255,255,0.08); /* Fundo transparente 8% */
+color:#fff; /* Letra branca */
+font-size:14px; /* 14px */
+box-sizing:border-box; /* Padding não aumenta largura */
+outline:none; /* Tira borda azul clique */
+transition:all .3s; /* Animação */
+text-transform:uppercase; /* AJUSTADO: já mostra maiúsculo automático visual */
+} /* Fecha inputs */
+input:focus,textarea:focus{ /* Quando clica */
+border-color:#ff1a1a; /* Borda vermelha */
+box-shadow:0 0 0 3px rgba(255,26,26,0.2); /* Brilho vermelho */
+transform:scale(1.01); /* Aumenta 1% */
+} /* Fecha focus */
+
+.servicos-grid{ /* Grid checkboxes serviços */
+display:grid; /* Grade */
+grid-template-columns:1fr 1fr; /* 2 colunas */
+gap:10px; /* Espaço 10px */
+margin:10px 0; /* Espaço */
+} /* Fecha grid */
+.check-item{ /* Item checkbox */
+display:flex; /* Lado a lado */
+align-items:center; /* Meio vertical */
+gap:8px; /* Espaço 8px */
+background:rgba(255,255,255,0.06); /* Fundo 6% */
+border:1px solid #3d5bff; /* Borda azul */
+border-radius:8px; /* Arredondado 8px */
+padding:10px 12px; /* Espaço interno */
+font-size:13px; /* 13px */
+cursor:pointer; /* Mãozinha */
+transition:all .3s; /* Animação */
+} /* Fecha check-item */
+.check-item:hover{ /* Hover serviço */
+transform:scale(1.03) translateY(-2px); /* Aumenta 3% sobe 2px */
+background:rgba(61,91,255,0.15); /* Azul claro 15% */
+} /* Fecha hover */
+.check-item input{ /* Checkbox dentro */
+width:16px; /* 16px */
+height:16px; /* 16px */
+accent-color:#ff1a1a; /* Vermelho marcado */
+} /* Fecha input checkbox */
+
+.btn-enviar{ /* Botão enviar orçamento */
+width:100%; /* 100% largura */
+margin-top:22px; /* Espaço cima 22px */
+padding:14px; /* Altura 14px */
+background:#ff1f2a; /* Vermelho padrão */
+color:#fff; /* Branco */
+border:none; /* Sem borda */
+border-radius:10px; /* Arredondado 10px */
+font-size:16px; /* 16px */
+font-weight:900; /* Negrito extra */
+cursor:pointer; /* Mãozinha */
+transition:all .3s; /* Animação */
+} /* Fecha btn-enviar */
+.btn-enviar:hover{ /* Hover enviar */
+transform:scale(1.03) translateY(-3px); /* Aumenta 3% sobe 3px */
+box-shadow:0 12px 30px rgba(255,31,42,0.5); /* Sombra vermelha */
+background:#e60000; /* Vermelho mais escuro */
+} /* Fecha hover */
+.obrig{ /* Asterisco obrigatório */
+color:#ff1a1a; /* Vermelho */
+} /* Fecha obrig */
+
+</style> <!-- Fecha CSS -->
+</head> <!-- Fecha head -->
+
+<body> <!-- Corpo visível -->
+<header class="topo"> <!-- Topo padrão -->
+<a href="index.html" class="btn-voltar">⬅ VOLTAR</a> <!-- Botão voltar index -->
+<a href="index.html" class="logo-meio"> <!-- Logo link index -->
+<img src="logo.png" alt="SANTOS SISTEMAS"> <!-- Imagem logo -->
+<span class="nome-logo">SANTOS SISTEMAS</span> <!-- Nome -->
+</a> <!-- Fecha logo-meio -->
+</header> <!-- Fecha header -->
+
+<main class="conteudo"> <!-- Conteúdo principal -->
+<h1>SOLICITAR ORÇAMENTO</h1> <!-- Título página -->
+<p class="sub">Preencha seus dados e selecione os serviços desejados.</p> <!-- Subtítulo -->
+
+<div class="form-box"> <!-- Caixa formulário -->
+<form id="formOrcamento" onsubmit="enviarWhatsapp(event)"> <!-- Form chama função JS -->
+
+<label>Nome completo <span class="obrig">*</span></label> <!-- Rótulo nome -->
+<input type="text" id="nome" placeholder="EX: JOAO SILVA" maxlength="30" required autocomplete="off"> <!-- AJUSTADO: id nome, placeholder maiúsculo, maxlength 30 limita 30 caracteres, required obrigatório, autocomplete off sem sugestão -->
+
+<label>Telefone / WhatsApp <span class="obrig">*</span></label> <!-- Rótulo telefone -->
+<input type="tel" id="telefone" placeholder="(63)9813-0174" maxlength="14" required inputmode="numeric" autocomplete="off"> <!-- AJUSTADO: id telefone, placeholder formato (xx)xxxx-xxxx, maxlength 14 conta ()-, required, inputmode numeric teclado numérico, autocomplete off -->
+
+<label>Email <span class="obrig">*</span></label> <!-- Rótulo email -->
+<input type="email" id="email" placeholder="joao@empresa.com" required style="text-transform:none"> <!-- Input email obrigatório, style none não força maiúsculo no email -->
+
+<label>Site da empresa</label> <!-- Rótulo site opcional -->
+<input type="url" id="site" placeholder="https://suaempresa.com.br" style="text-transform:none"> <!-- Input site opcional, none pra não maiúsculo -->
+
+<label>Endereço / Cidade <span class="obrig">*</span></label> <!-- Rótulo endereço -->
+<input type="text" id="endereco" placeholder="Rua X, 123 - Araguaína-TO" required> <!-- Input endereço obrigatório -->
+
+<label>Quais serviços deseja? <span class="obrig">*</span></label> <!-- Rótulo serviços -->
+<div class="servicos-grid"> <!-- Grid 2 colunas serviços -->
+<label class="check-item"><input type="checkbox" value="COM VIA RÁDIO"> COM VIA RÁDIO</label> <!-- Checkbox serviço -->
+<label class="check-item"><input type="checkbox" value="COMISSIONAMENTO"> COMISSIONAMENTO</label> <!-- Checkbox serviço -->
+<label class="check-item"><input type="checkbox" value="CONTROLE CLP"> CONTROLE CLP</label> <!-- Checkbox serviço -->
+<label class="check-item"><input type="checkbox" value="OIT"> OIT</label> <!-- Checkbox serviço -->
+<label class="check-item"><input type="checkbox" value="PYTHON E SCADA"> PYTHON E SCADA</label> <!-- Checkbox serviço -->
+<label class="check-item"><input type="checkbox" value="SCADA"> SCADA</label> <!-- Checkbox serviço -->
+</div> <!-- Fecha grid -->
+
+<label>Descreva sua necessidade</label> <!-- Rótulo descrição -->
+<textarea id="mensagem" rows="4" placeholder="Ex: Preciso de automação para..."></textarea> <!-- Área texto livre -->
+
+<button type="submit" class="btn-enviar">📲 ENVIAR ORÇAMENTO VIA WHATSAPP</button> <!-- Botão enviar -->
+
+</form> <!-- Fecha form -->
+</div> <!-- Fecha form-box -->
+</main> <!-- Fecha main -->
+
+<script> // Inicia JavaScript
+
+// --- AJUSTE NOVO NOME: só letras maiúsculas automático limitado 30 ---
+document.getElementById('nome').addEventListener('input', function(e){ // Pega id nome escuta input quando digita
+  let v = e.target.value.toUpperCase(); // Converte tudo pra maiúsculo automático toUpperCase()
+  v = v.replace(/[^A-ZÁÀÂÃÉÊÍÓÔÕÚÇ\s]/g, ''); // Remove tudo que não é letra maiúscula e espaço, regex ^ nega
+  v = v.slice(0,30); // Limita máximo 30 caracteres slice 0 a 30 corta resto
+  e.target.value = v; // Aplica valor tratado de volta no campo
+}); // Fecha listener nome
+
+// --- AJUSTE NOVO TELEFONE: só números e formato (xx)xxxx-xxxx automático ---
+document.getElementById('telefone').addEventListener('input',function(e){ // Pega id telefone escuta input digitação
+  let v=e.target.value.replace(/\D/g,''); // Remove tudo que não é número \D, fica só dígitos
+  v=v.slice(0,11); // Limita 11 dígitos máximo pra celular novo
+  let f=''; // Cria variável formatada vazia
+  if(v.length>0){ f='(' + v.substring(0,2); } // Se começou digitar abre ( + 2 primeiros DDD
+  if(v.length>=3){ f+=')' + v.substring(2,6); } // Se 3+ fecha ) + 4 dígitos meio
+  if(v.length>=7){ f+='-' + v.substring(6,11); } // Se 7+ adiciona - + resto até 11 vira (xx)xxxx-xxxx ou (xx)xxxxx-xxxx
+  // Ajuste fino: se 11 dígitos formata (xx)xxxxx-xxxx senão (xx)xxxx-xxxx
+  if(v.length==11){ f='(' + v.substring(0,2) + ')' + v.substring(2,7) + '-' + v.substring(7,11); } // Formato celular novo 9 na frente
+  e.target.value=f; // Aplica formatado de volta no campo máscara automática
+}); // Fecha máscara telefone
+
+function enviarWhatsapp(e){ // Função enviar
+e.preventDefault(); // Impede recarregar página preventDefault()
+let nome=document.getElementById('nome').value; // Pega nome já maiúsculo tratado
+let tel=document.getElementById('telefone').value; // Pega telefone já formatado
+let email=document.getElementById('email').value; // Pega email
+let site=document.getElementById('site').value||'Não informado'; // Pega site ou padrão Não informado se vazio
+let end=document.getElementById('endereco').value; // Pega endereço
+let msg=document.getElementById('mensagem').value||'Não informado'; // Pega mensagem extra ou padrão
+let servicos=[]; // Array vazio serviços
+document.querySelectorAll('.servicos-grid input:checked').forEach(c=>{ // Para cada checkbox marcado dentro servicos-grid
+servicos.push(c.value); // Adiciona valor no array push
+}); // Fecha forEach
+if(servicos.length===0){ // Se nenhum serviço marcado length 0
+alert('Selecione pelo menos 1 serviço!'); // Alerta usuário precisa selecionar 1
+return; // Para execução return
+} // Fecha if
+if(nome.length<3){ alert('Digite nome válido com 3+ letras!'); return; } // Valida nome mínimo 3 letras
+if(tel.length<13){ alert('Digite telefone completo (xx)xxxx-xxxx'); return; } // Valida telefone mínimo 13 chars com máscara
+let texto=`*NOVO ORÇAMENTO - SANTOS SISTEMAS*%0A%0A*Nome:* ${nome}%0A*Telefone:* ${tel}%0A*Email:* ${email}%0A*Site:* ${site}%0A*Endereço:* ${end}%0A%0A*Serviços:*%0A- ${servicos.join('%0A- ')}%0A%0A*Detalhes:* ${msg}%0A`; // Monta texto WhatsApp %0A quebra linha join %0A- separa serviços
+let numero='5563981301747'; // Seu número WhatsApp 55 Brasil + 63
+let link=`https://wa.me/${numero}?text=${texto}`; // Monta link wa.me número + ?text= texto
+window.open(link,'_blank'); // Abre WhatsApp nova aba _blank
+} // Fecha função
+
+</script> <!-- Fecha script -->
+
+</body> <!-- Fecha body -->
+</html> <!-- Fecha html -->

@@ -1,0 +1,334 @@
+<!DOCTYPE html> <!-- Diz ao navegador que é HTML5 moderno -->
+<html lang="pt-br"> <!-- Inicia HTML e define idioma português Brasil -->
+<head> <!-- Inicia cabeça, configurações invisíveis -->
+  <meta charset="utf-8"> <!-- Permite acentos ç ã é á -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Deixa responsivo no celular -->
+  <title>COMUNICAÇÃO VIA RÁDIO - SANTOS SISTEMAS</title> <!-- Título que aparece na aba do navegador -->
+  <style> /* Inicia CSS, parte visual */
+
+    /* ----- 1. CORPO GERAL ----- */
+    body{ /* Estiliza o corpo inteiro da página */
+      margin:0; /* Tira margem branca que navegador coloca */
+      font-family:Arial; /* Define fonte Arial */
+      background:#0a1931; /* Cor de fundo azul escuro padrão */
+      color:#fff; /* Cor da letra branca padrão */
+    } /* Fecha corpo */
+
+    /* ----- 2. TOPO PADRÃO ----- */
+    .topo{ /* Estiliza barra do topo */
+      height:68px; /* Altura da barra 68 pixels */
+      padding:0 30px; /* Espaço interno 0 em cima/baixo e 30 nas laterais */
+      display:flex; /* Coloca itens lado a lado */
+      align-items:center; /* Alinha itens no meio vertical */
+      justify-content:center; /* Centraliza conteúdo horizontal */
+      position:absolute; /* Fica por cima, não empurra resto */
+      width:100%; /* Largura 100% da tela */
+      box-sizing:border-box; /* Faz padding não aumentar largura */
+      z-index:20; /* Camada 20, fica na frente do banner */
+      background:#0a1931; /* Fundo azul escuro igual body */
+    } /* Fecha topo */
+
+    /* ----- 3. LOGO NO MEIO SOBREPONDO ----- */
+    .logo-meio{ /* Div que segura logo + nome */
+      position:absolute; /* Posição solta, fora do fluxo normal */
+      left:50%; /* Vai para 50% da esquerda, meio da tela */
+      transform:translateX(-50%); /* Volta metade da própria largura pra centralizar certinho */
+      top:8px; /* Desce 8px do topo pra sobrepor metade barra metade fora igual foto */
+      z-index:30; /* Camada 30, bem na frente de tudo */
+      display:flex; /* Itens um em cima do outro com flex */
+      flex-direction:column; /* Direção coluna, um em cima do outro */
+      align-items:center; /* Centraliza logo e nome no meio */
+      gap:8px; /* Espaço de 8px entre logo e nome */
+      text-decoration:none; /* Tira sublinhado porque é link */
+    } /* Fecha logo-meio */
+    .logo-meio img{ /* Imagem do logo dentro da div */
+      height:108px; /* Altura 108px grande */
+      width:108px; /* Largura 108px igual altura pra virar círculo */
+      border-radius:50%; /* Arredonda 50% vira círculo perfeito */
+      background:#d9d9d9; /* Fundo cinza claro dentro do círculo */
+      padding:4px; /* Espaço de 4px entre logo e borda do círculo */
+      object-fit:contain; /* Logo não estica, se encaixa sem deformar */
+      box-shadow: 0 0 0 5px #fff, /* Sombra 1: borda branca grossa 5px */
+                  0 0 0 7px #e0e0e0, /* Sombra 2: borda cinza clara 7px por fora da branca */
+                  0 8px 20px rgba(0,0,0,0.6), /* Sombra 3: sombra preta pra baixo 8px com blur 20px pra relevo 3D */
+                  inset 0 2px 5px rgba(255,255,255,0.9); /* Sombra 4 interna: brilho branco por dentro em cima */
+      border:2px solid #fff; /* Borda final branca 2px */
+    } /* Fecha imagem */
+    .nome-logo{ /* Texto SANTOS SISTEMAS abaixo do logo */
+      font-size:18px; /* Tamanho 18px maior que antes */
+      font-weight:900; /* Peso 900 negrito extra forte */
+      text-transform:uppercase; /* Transforma tudo em letra maiúscula */
+      color:#fff; /* Cor branca */
+      letter-spacing:2.5px; /* Espaço de 2.5px entre cada letra */
+      text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra preta no texto 2px pra baixo 6px blur pra destacar */
+      white-space:nowrap; /* Não deixa quebrar linha, fica em uma linha só */
+    } /* Fecha nome-logo */
+
+    /* ----- 4. BOTÕES DIREITA COM ANIMAÇÃO ----- */
+    .menu-outro-lado{ /* Container dos botões contato/whatsapp/orçamento */
+      margin-left:auto; /* Empurra tudo pra direita, pro outro lado do logo */
+      display:flex; /* Botões lado a lado */
+      align-items:center; /* Alinha no meio vertical */
+      gap:20px; /* Espaço de 20px entre cada botão */
+    } /* Fecha menu-outro-lado */
+    .menu-outro-lado a.link{ /* Estiliza links CONTATO e WHATSAPP */
+      color:#cbd5e1; /* Cor cinza claro igual sua foto */
+      text-decoration:none; /* Tira sublinhado de link */
+      font-size:12px; /* Tamanho 12px pequeno */
+      font-weight:bold; /* Negrito */
+      display:flex; /* Ícone e texto lado a lado */
+      align-items:center; /* Centraliza ícone com texto */
+      gap:5px; /* Espaço 5px entre ícone e texto */
+      cursor:pointer; /* Mostra mãozinha quando passa mouse */
+      transition: all 0.3s ease; /* Cria animação suave de tudo em 0.3 segundos */
+    } /* Fecha link */
+    .menu-outro-lado a.link:hover{ /* Quando passa mouse em cima do CONTATO/WHATSAPP */
+      transform: scale(1.12) translateY(-3px); /* Aumenta 12% de tamanho e sobe 3px */
+      color:#fff; /* Fica branco puro */
+      text-shadow:0 0 8px rgba(255,255,255,0.7); /* Brilho branco 8px no texto */
+    } /* Fecha hover link */
+    .btn-orcamento{ /* Botão vermelho ORÇAMENTO */
+      background:#ff1f2a; /* Fundo vermelho */
+      padding:9px 20px; /* Espaço interno 9px cima/baixo 20px lados */
+      border-radius:6px; /* Bordas arredondadas 6px */
+      color:#fff!important; /* Cor branca, !important força ficar branco */
+      text-decoration:none; /* Sem sublinhado */
+      font-size:12px; /* Tamanho 12px */
+      font-weight:bold; /* Negrito */
+      cursor:pointer; /* Mãozinha */
+      transition: all 0.3s ease; /* Animação suave 0.3s */
+      display:inline-block; /* Precisa pra transform funcionar */
+    } /* Fecha btn-orcamento */
+    .btn-orcamento:hover{ /* Quando passa mouse no ORÇAMENTO */
+      transform: scale(1.12) translateY(-4px); /* Aumenta 12% e sobe 4px */
+      background:#ff2f3a; /* Vermelho mais claro brilhante */
+      box-shadow:0 10px 25px rgba(255,31,42,0.5); /* Sombra vermelha grande */
+    } /* Fecha hover orçamento */
+
+    /* ----- 5. BOTÃO VOLTAR ESQUERDA ----- */
+    .btn-voltar{ /* Botão VOLTAR lado esquerdo */
+      position:absolute; /* Posição fixa solta */
+      top:14px; /* 14px do topo */
+      left:20px; /* 20px da esquerda */
+      padding:8px 18px; /* Espaço interno */
+      background:#0033cc; /* Fundo azul */
+      color:#fff; /* Letra branca */
+      text-decoration:none; /* Sem sublinhado */
+      border-radius:20px; /* Bem redondo 20px */
+      font-weight:bold; /* Negrito */
+      font-size:13px; /* Tamanho 13px */
+      z-index:25; /* Camada 25 frente da barra */
+      transition: all 0.3s ease; /* Animação suave */
+    } /* Fecha btn-voltar */
+    .btn-voltar:hover{ /* Quando passa mouse no VOLTAR */
+      transform: scale(1.12) translateY(-3px); /* Aumenta 12% e sobe 3px */
+      background:#0022aa; /* Azul mais escuro */
+      box-shadow:0 8px 20px rgba(0,51,204,0.5); /* Sombra azul */
+    } /* Fecha hover voltar */
+
+    /* ----- 6. CONTEÚDO CENTRAL ----- */
+    .conteudo{ /* Caixa central com texto */
+      padding:160px 40px 60px; /* 160px em cima por causa logo grande, 40 laterais, 60 embaixo */
+      max-width:900px; /* Largura máxima 900px não deixa esticar muito */
+      margin:0 auto; /* 0 cima/baixo auto laterais centraliza na tela */
+      text-align:center; /* Texto centralizado */
+    } /* Fecha conteudo */
+    .conteudo h1{ /* Título COMUNICAÇÃO VIA RÁDIO */
+      font-size:32px; /* Tamanho 32px grande */
+      color:#ff1a1a; /* Cor vermelha */
+      letter-spacing:2px; /* Espaço 2px entre letras */
+      margin-bottom:10px; /* Espaço 10px abaixo */
+    } /* Fecha h1 */
+    .conteudo p{ /* Parágrafos de texto */
+      font-size:16px; /* Tamanho 16px normal */
+      color:#cbd5e1; /* Cor cinza claro */
+      line-height:1.6; /* Altura da linha 1.6 deixa respirado */
+      margin:12px 0; /* Espaço 12px cima/baixo */
+    } /* Fecha p */
+    .lista-servico{ /* Lista com bolinhas */
+      text-align:left; /* Texto alinhado esquerda dentro */
+      display:inline-block; /* Vira bloco pequeno mas centraliza com text-align do pai */
+      margin:20px 0; /* Espaço 20px cima/baixo */
+      background:rgba(255,255,255,0.05); /* Fundo branco transparente 5% */
+      border:1.5px solid #3d5bff; /* Borda azul 1.5px */
+      border-radius:12px; /* Arredondado 12px */
+      padding:20px 30px; /* Espaço interno 20 cima/baixo 30 lados */
+    } /* Fecha lista */
+    .lista-servico li{ /* Cada item da lista */
+      margin:8px 0; /* Espaço 8px cima/baixo entre itens */
+      font-size:14px; /* Tamanho 14px */
+    } /* Fecha li */
+
+    /* ----- 7. PESQUISA NO LUGAR DO BOTÃO VERMELHO ----- */
+    .pesquisa-baixo{ /* Caixa pesquisa embaixo no lugar do botão vermelho */
+      display:flex; /* Input e botão lupa lado a lado */
+      align-items:center; /* Centraliza vertical */
+      justify-content:center; /* Centraliza horizontal */
+      gap:6px; /* Espaço 6px entre campo e lupa */
+      margin:30px auto 0; /* 30px em cima auto laterais centraliza 0 embaixo */
+      width:320px; /* Largura 320px igual botão vermelho antigo */
+      height:44px; /* Altura 44px igual botão vermelho antigo */
+      background:rgba(255,255,255,0.08); /* Fundo branco transparente 8% */
+      border:1.5px solid #3d5bff; /* Borda azul igual caixinhas */
+      border-radius:8px; /* Arredondado 8px igual botão vermelho */
+      padding:5px 8px; /* Espaço interno */
+      box-sizing:border-box; /* Padding não aumenta tamanho */
+      transition: all 0.3s ease; /* Animação suave */
+    } /* Fecha pesquisa-baixo */
+    .pesquisa-baixo:hover{ /* Quando passa mouse na caixa de pesquisa */
+      transform: scale(1.08) translateY(-3px); /* Aumenta 8% e sobe 3px */
+      border-color:#6d8cff; /* Borda fica azul clara */
+      box-shadow:0 10px 25px rgba(61,91,255,0.4); /* Sombra azul */
+      background:rgba(255,255,255,0.12); /* Fundo um pouco mais claro */
+    } /* Fecha hover pesquisa */
+    .pesquisa-baixo input{ /* Campo onde digita */
+      flex:1; /* Ocupa todo espaço disponível menos a lupa */
+      background:transparent; /* Fundo transparente */
+      border:none; /* Sem borda */
+      color:#fff; /* Letra branca quando digita */
+      font-size:14px; /* Tamanho 14px */
+      outline:none; /* Tira borda azul quando clica */
+      padding:6px; /* Espaço interno 6px */
+    } /* Fecha input */
+    .pesquisa-baixo input::placeholder{ /* Texto de exemplo Pesquisar... */
+      color:#aaa /* Cor cinza claro do placeholder */
+    } /* Fecha placeholder */
+    .pesquisa-baixo button{ /* Botão lupa 🔍 */
+      background:#0033cc; /* Fundo azul */
+      color:#fff; /* Ícone branco */
+      border:none; /* Sem borda */
+      border-radius:6px; /* Arredondado 6px */
+      padding:8px 14px; /* Tamanho interno */
+      cursor:pointer; /* Mãozinha */
+      font-size:14px; /* Tamanho ícone */
+      transition: all 0.3s ease; /* Animação suave */
+    } /* Fecha button */
+    .pesquisa-baixo button:hover{ /* Quando passa mouse na lupa */
+      background:#0022aa; /* Azul mais escuro */
+      transform: scale(1.1); /* Aumenta 10% */
+    } /* Fecha hover button */
+
+    /* ----- 8. POPUP WHATSAPP NOVO ----- */
+    .fundo-popup{ /* Fundo escuro atrás popup */
+      display:none; /* Escondido início */
+      position:fixed; /* Fixo tela toda */
+      top:0;left:0; /* Topo 0 esquerda 0 */
+      width:100%;height:100%; /* 100% tela */
+      background:rgba(0,0,0,0.7); /* Preto 70% transparente */
+      z-index:99; /* Frente tudo */
+      align-items:center; /* Meio vertical */
+      justify-content:center; /* Meio horizontal */
+    } /* Fecha fundo-popup */
+    .fundo-popup.ativo{ /* Quando ativo */
+      display:flex; /* Mostra flex */
+    } /* Fecha ativo */
+    .popup-box{ /* Caixa branca popup */
+      background:#fff; /* Fundo branco */
+      color:#0a1931; /* Texto azul escuro */
+      border-radius:16px; /* Arredondado */
+      padding:25px 30px; /* Espaço interno */
+      width:320px; /* Largura 320px */
+      text-align:center; /* Centro */
+      box-shadow:0 20px 50px rgba(0,0,0,0.5); /* Sombra */
+    } /* Fecha popup-box */
+    .popup-box a.numero{ /* Link número WhatsApp */
+      display:block; /* Bloco */
+      margin:12px 0; /* Espaço 12px */
+      padding:12px; /* Espaço interno */
+      background:#25d366; /* Verde WhatsApp */
+      color:#fff; /* Branco */
+      text-decoration:none; /* Sem sublinhado */
+      border-radius:10px; /* Arredondado */
+      font-weight:bold; /* Negrito */
+      transition:all .3s; /* Animação */
+    } /* Fecha numero */
+    .btn-fechar{ /* Botão fechar */
+      margin-top:10px; /* Espaço cima */
+      padding:8px 18px; /* Espaço */
+      background:#0a1931; /* Azul escuro */
+      color:#fff; /* Branco */
+      border:none; /* Sem borda */
+      border-radius:20px; /* Redondo */
+      cursor:pointer; /* Mãozinha */
+    } /* Fecha btn-fechar */
+
+  </style> <!-- Fecha CSS -->
+</head> <!-- Fecha head -->
+
+<body> <!-- Inicia corpo visível pro usuário -->
+
+  <header class="topo"> <!-- Inicia header topo padrão -->
+
+    <a href="index.html" class="btn-voltar">⬅ VOLTAR</a> <!-- Link botão voltar pra index, ⬅ é seta -->
+
+    <a href="index.html" class="logo-meio"> <!-- Link logo no meio que leva pra index quando clica -->
+      <img src="logo.png" alt="SANTOS SISTEMAS"> <!-- Imagem logo, src nome arquivo tem que estar na mesma pasta -->
+      <span class="nome-logo">SANTOS SISTEMAS</span> <!-- Texto nome abaixo do logo -->
+    </a> <!-- Fecha logo-meio -->
+
+    <nav class="menu-outro-lado"> <!-- Nav navegação botões direita -->
+      <a href="contato.html" class="link">📞 CONTATO</a> <!-- AJUSTADO: agora abre contato.html -->
+      <a class="link" onclick="abrirPopup()">💬 WHATSAPP</a> <!-- AJUSTADO: agora abre popup -->
+      <a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- AJUSTADO: agora abre orcamento.html -->
+    </nav> <!-- Fecha nav -->
+
+  </header> <!-- Fecha header topo -->
+
+  <main class="conteudo"> <!-- Inicia main conteúdo principal da página -->
+
+    <h1>COMUNICAÇÃO VIA RÁDIO</h1> <!-- Título principal h1 da página -->
+
+    <p><b style="color:#fff">Soluções de telemetria e comunicação sem fio para áreas remotas</b></p> <!-- Parágrafo com b bold, style deixa branco puro dentro -->
+
+    <p>Desenvolvimento, instalação e manutenção de sistemas de <b>Comunicação Via Rádio</b> para automação industrial.</p> <!-- Parágrafo explicativo com negrito no termo -->
+
+    <ul class="lista-servico"> <!-- Inicia lista não ordenada ul -->
+      <li>📡 Rádio modem UHF/VHF para CLP e SCADA</li> <!-- Item li 1 da lista, 📡 ícone antena -->
+      <li>📶 Enlace ponto a ponto e multiponto</li> <!-- Item 2, 📶 ícone sinal -->
+      <li>🗼 Projeto de torre e estudo de viabilidade</li> <!-- Item 3, 🗼 ícone torre -->
+      <li>🔧 Configuração, alinhamento de antenas e comissionamento</li> <!-- Item 4, 🔧 chave -->
+      <li>🛡️ Manutenção preventiva e corretiva</li> <!-- Item 5, 🛡️ escudo -->
+    </ul> <!-- Fecha lista ul -->
+
+    <p>Programação, manutenção e instalação completa de COMUNICAÇÃO VIA RÁDIO para sua planta industrial.</p> <!-- Parágrafo final reforço -->
+
+    <div class="pesquisa-baixo"> <!-- Div caixa pesquisa no lugar do botão vermelho antigo -->
+      <input type="search" id="pesquisa" placeholder="Pesquisar..."> <!-- Input tipo search campo de pesquisa, id pesquisa usado no JS, placeholder texto cinza -->
+      <button onclick="buscar()">🔍</button> <!-- Botão lupa, onclick chama função buscar() quando clica -->
+    </div> <!-- Fecha div pesquisa -->
+
+  </main> <!-- Fecha main conteúdo -->
+
+  <!-- POPUP WHATSAPP ESCONDIDO NOVO -->
+  <div id="fundoPopup" class="fundo-popup" onclick="fecharPopup()"> <!-- Fundo clique fora fecha -->
+    <div class="popup-box" onclick="event.stopPropagation()"> <!-- Caixa popup stopPropagation não fecha ao clicar dentro -->
+      <h3 style="margin:0 0 10px;color:#ff1a1a">💬 Fale no WhatsApp</h3> <!-- Título popup vermelho -->
+      <p style="font-size:13px;color:#555">Escolha um número:</p> <!-- Texto escolha -->
+      <a href="https://wa.me/5563981301747" target="_blank" class="numero">📱 (63) 98130-1747 - Comercial</a> <!-- Link WhatsApp 1 comercial -->
+      <a href="https://wa.me/5563981301747?text=Ol%C3%A1%20preciso%20de%20suporte%20t%C3%A9cnico" target="_blank" class="numero" style="background:#0a1931">🛠️ Suporte Técnico</a> <!-- Link WhatsApp 2 suporte mensagem pronta -->
+      <button class="btn-fechar" onclick="fecharPopup()">Fechar</button> <!-- Botão fechar -->
+    </div> <!-- Fecha popup-box -->
+  </div> <!-- Fecha fundo-popup -->
+
+  <script> // Inicia JavaScript
+    function buscar(){ // Declara função buscar
+      let termo = document.getElementById('pesquisa').value.toLowerCase(); // Pega elemento com id pesquisa, pega valor digitado, converte pra minúsculo
+      if(termo.includes('clp')) location.href='controle-clp.html'; // Se termo contém clp, redireciona pra controle-clp.html
+      else if(termo.includes('scada')) location.href='scada.html'; // Senão se contém scada, vai pra scada.html
+      else if(termo.includes('radio')) location.href='com-via-radio.html'; // Senão se contém radio, vai pra com-via-radio.html (essa mesma página)
+      else if(termo!='') alert('Serviço não encontrado: '+termo); // Senão se não vazio, mostra alerta não encontrado com termo
+    } // Fecha função buscar
+    document.getElementById('pesquisa').addEventListener('keydown', function(e){ // Pega campo pesquisa e escuta evento keydown tecla pressionada
+      if(e.key === 'Enter'){ buscar(); } // Se tecla pressionada for Enter, chama buscar()
+    }); // Fecha addEventListener
+
+    function abrirPopup(){ // Função abrir popup WhatsApp
+      document.getElementById('fundoPopup').classList.add('ativo'); // Adiciona classe ativo mostra popup
+    } // Fecha abrir
+    function fecharPopup(){ // Função fechar popup
+      document.getElementById('fundoPopup').classList.remove('ativo'); // Remove classe ativo esconde popup
+    } // Fecha fechar
+  </script> <!-- Fecha script -->
+
+</body> <!-- Fecha body corpo -->
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html> <!-- HTML5 moderno -->
+<html lang="pt-br"> <!-- Idioma português -->
+<head> <!-- Configurações invisíveis -->
+<meta charset="utf-8"> <!-- Libera acentos ç ã -->
+<meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Responsivo celular -->
+<title>SANTOS SISTEMAS</title> <!-- Título da aba -->
+<style> /* Inicia CSS visual */
+
+body{ /* Corpo todo */
+margin:0; /* Tira margem branca */
+font-family:Arial; /* Fonte Arial */
+background:#0a1931; /* Fundo azul escuro padrão */
+color:#fff; /* Letra branca */
+overflow-x:hidden; /* Não deixa scroll lateral */
+} /* Fecha body */
+
+.topo{ /* Barra topo */
+height:62px; /* Altura 62px */
+padding:0 30px; /* Espaço 0 cima/baixo 30 lados */
+display:flex; /* Lado a lado */
+align-items:center; /* Meio vertical */
+justify-content:flex-end; /* Botões direita */
+position:absolute; /* Fica por cima */
+width:100%; /* 100% largura */
+box-sizing:border-box; /* Padding não aumenta largura */
+z-index:20; /* Frente camada 20 */
+background:rgba(10,25,49,0.95); /* Azul quase sólido */
+} /* Fecha topo */
+
+.logo-meio{ /* Div logo + nome centro */
+position:absolute; /* Posição solta */
+left:50%; /* 50% esquerda meio */
+transform:translateX(-50%); /* Centraliza certinho */
+top:8px; /* Desce 8px sobrepondo igual foto */
+z-index:30; /* Frente de tudo */
+display:flex; /* Um em cima do outro */
+flex-direction:column; /* Coluna */
+align-items:center; /* Centraliza */
+gap:6px; /* Espaço 6px logo e nome */
+text-decoration:none; /* Tira sublinhado */
+} /* Fecha logo-meio */
+.logo-meio img{ /* Imagem logo */
+height:96px; /* Altura 96px */
+width:96px; /* Largura 96px círculo */
+border-radius:50%; /* Vira círculo */
+background:#d9d9d9; /* Fundo cinza claro */
+padding:4px; /* Espaço interno */
+object-fit:contain; /* Não estica */
+box-shadow:0 0 0 4px #fff,0 0 0 6px #e0e0e0,0 8px 20px rgba(0,0,0,0.6); /* Borda branca + cinza + sombra 3D */
+border:2px solid #fff; /* Borda branca */
+} /* Fecha img */
+.nome-logo{ /* Nome SANTOS SISTEMAS */
+font-size:13px; /* Tamanho 13px */
+font-weight:900; /* Negrito extra forte */
+letter-spacing:2.5px; /* Espaço entre letras */
+text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra preta */
+white-space:nowrap; /* Uma linha só */
+color:#fff; /* Branco */
+} /* Fecha nome */
+
+.menu-outro-lado{ /* Caixa botões direita */
+display:flex; /* Lado a lado */
+gap:18px; /* Espaço 18px */
+align-items:center; /* Meio vertical */
+} /* Fecha menu */
+.menu-outro-lado a.link{ /* Links CONTATO WHATSAPP */
+color:#ff4d6d; /* Rosa/vermelho claro igual foto */
+text-decoration:none; /* Sem sublinhado */
+font-size:10px; /* 10px pequeno igual foto */
+font-weight:bold; /* Negrito */
+cursor:pointer; /* Mãozinha */
+transition:all .3s; /* Animação suave */
+} /* Fecha link */
+.menu-outro-lado a.link:hover{ /* Hover passa mouse */
+transform:scale(1.12) translateY(-2px); /* Aumenta 12% sobe 2px */
+color:#fff; /* Branco */
+} /* Fecha hover */
+.btn-orcamento{ /* Botão vermelho ORÇAMENTO */
+background:#ff1f2a; /* Vermelho */
+padding:7px 16px; /* Espaço interno */
+border-radius:5px; /* Arredondado 5px */
+color:#fff!important; /* Branco força */
+text-decoration:none; /* Sem sublinhado */
+font-size:10px; /* 10px */
+font-weight:bold; /* Negrito */
+display:inline-block; /* Pra transform funcionar */
+transition:all .3s; /* Animação */
+} /* Fecha orçamento */
+.btn-orcamento:hover{ /* Hover orçamento */
+transform:scale(1.12) translateY(-3px); /* Aumenta 12% sobe 3px */
+box-shadow:0 8px 20px rgba(255,31,42,.5); /* Sombra vermelha */
+} /* Fecha hover */
+
+.fundo-globo{ /* Fundo com imagem globo DIA */
+min-height:100vh; /* Altura 100% tela */
+background:linear-gradient(rgba(10,25,49,0.6),rgba(10,25,49,0.75)), url('https://images.unsplash.com/photo-1451187580459-43490279c0fa?q=80&w=2000'); /* Degradê azul + imagem terra DIA com Brasil */
+background-size:cover; /* Cobre tudo */
+background-position:center left; /* Centro esquerda mostra Brasil */
+display:flex; /* Lado a lado */
+align-items:center; /* Meio vertical */
+justify-content:space-between; /* Um esquerda um direita */
+padding:120px 60px 60px; /* 120 cima por logo 60 lados 60 baixo */
+box-sizing:border-box; /* Padding não aumenta */
+} /* Fecha fundo-globo */
+
+.esquerda{ /* Lado esquerdo texto */
+max-width:420px; /* Largura máxima 420px */
+text-align:left; /* Esquerda */
+} /* Fecha esquerda */
+.esquerda h1{ /* Título Controle e Automação */
+margin:0; /* Tira margem */
+line-height:1.1; /* Altura linha 1.1 */
+} /* Fecha h1 */
+.esquerda h1 .vermelho{ /* Parte vermelha */
+color:#ff1a1a; /* Vermelho */
+font-size:32px; /* 32px */
+font-weight:900; /* Negrito extra */
+display:block; /* Linha própria */
+} /* Fecha vermelho */
+.esquerda h1 .branco{ /* Parte branca Industrial */
+color:#fff; /* Branco */
+font-size:30px; /* 30px */
+font-weight:900; /* Negrito */
+display:block; /* Linha própria */
+} /* Fecha branco */
+.esquerda p{ /* Subtítulo pequeno */
+font-size:9px; /* 9px pequeno igual foto */
+color:#cbd5e1; /* Cinza claro */
+margin-top:12px; /* Espaço cima 12px */
+letter-spacing:0.5px; /* Espaço letras */
+text-transform:uppercase; /* Maiúsculo */
+} /* Fecha p */
+
+.direita{ /* Lado direito serviços */
+max-width:460px; /* Largura máxima 460px */
+} /* Fecha direita */
+
+.titulo-servicos{ /* TEXTO SELECIONE NOSSOS SERVIÇOS CENTRALIZADO */
+font-size:10px; /* 10px pequeno igual foto */
+letter-spacing:2.5px; /* Espaço 2.5px entre letras igual foto */
+text-align:center; /* CENTRALIZADO EM CIMA DOS BOTÕES - AJUSTADO */
+margin-bottom:18px; /* Espaço baixo 18px pra separar dos botões */
+color:#fff; /* Branco */
+font-weight:bold; /* Negrito */
+text-transform:uppercase; /* Maiúsculo */
+} /* Fecha titulo-servicos */
+
+.grid{ /* Grade 3x2 serviços */
+display:grid; /* Grade */
+grid-template-columns:repeat(3,1fr); /* 3 colunas iguais igual foto */
+gap:14px; /* Espaço 14px entre botões */
+} /* Fecha grid */
+.card{ /* Cartão serviço */
+background:rgba(15,30,65,0.6); /* Fundo azul transparente 60% */
+border:1.2px solid #3d5bff; /* Borda azul igual foto */
+border-radius:10px; /* Arredondado 10px */
+padding:18px 10px; /* Espaço interno */
+text-align:center; /* Centro */
+text-decoration:none; /* Sem sublinhado */
+color:#fff; /* Branco */
+transition:all .3s; /* Animação */
+min-height:70px; /* Altura mínima 70px */
+display:flex; /* Coluna */
+flex-direction:column; /* Coluna */
+align-items:center; /* Centro */
+justify-content:center; /* Meio */
+gap:8px; /* Espaço ícone e texto */
+} /* Fecha card */
+.card:hover{ /* Hover card */
+transform:scale(1.07) translateY(-5px); /* Aumenta 7% sobe 5px */
+box-shadow:0 12px 30px rgba(61,91,255,0.45); /* Sombra azul */
+border-color:#ff1a1a; /* Borda vermelha */
+} /* Fecha hover card */
+.card .ico{ /* Ícone dentro card */
+font-size:22px; /* Tamanho 22px */
+} /* Fecha ico */
+.card span.txt{ /* Texto serviço */
+font-size:8.5px; /* 8.5px pequeno igual foto */
+font-weight:bold; /* Negrito */
+} /* Fecha txt */
+
+.fundo-popup{ display:none; position:fixed; top:0;left:0; width:100%;height:100%; background:rgba(0,0,0,0.7); z-index:99; align-items:center; justify-content:center; } /* Fundo popup */
+.fundo-popup.ativo{ display:flex; } /* Ativo mostra */
+.popup-box{ background:#fff; color:#0a1931; border-radius:16px; padding:25px 30px; width:320px; text-align:center; } /* Caixa branca */
+.popup-box a.numero{ display:block; margin:12px 0; padding:12px; background:#25d366; color:#fff; text-decoration:none; border-radius:10px; font-weight:bold; } /* Número verde */
+.btn-fechar{ margin-top:10px; padding:8px 18px; background:#0a1931; color:#fff; border:none; border-radius:20px; cursor:pointer; } /* Botão fechar */
+
+@media(max-width:900px){ /* Celular até 900px */
+.fundo-globo{ flex-direction:column; padding:140px 20px 40px; gap:30px; } /* Coluna no celular */
+.esquerda{ text-align:center; } /* Centro celular */
+.titulo-servicos{ text-align:center; } /* Mantém centro celular */
+.grid{ grid-template-columns:repeat(2,1fr); } /* 2 colunas celular */
+} /* Fecha media */
+
+</style> <!-- Fecha CSS -->
+</head> <!-- Fecha head -->
+<body> <!-- Corpo visível -->
+<header class="topo"> <!-- Topo -->
+<a href="index.html" class="logo-meio"><img src="logo.png" alt="SANTOS SISTEMAS"><span class="nome-logo">SANTOS SISTEMAS</span></a> <!-- Logo centro -->
+<nav class="menu-outro-lado"> <!-- Menu direita -->
+<a href="contato.html" class="link">📞 CONTATO</a> <!-- CONTATO abre contato.html -->
+<a class="link" onclick="abrirPopup()">💬 WHATSAPP</a> <!-- WHATSAPP abre popup -->
+<a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- ORÇAMENTO abre orcamento.html -->
+</nav> <!-- Fecha nav -->
+</header> <!-- Fecha header -->
+<div class="fundo-globo"> <!-- Fundo globo imagem terra DIA Brasil -->
+<div class="esquerda"> <!-- Esquerda texto -->
+<h1><span class="vermelho">Controle e</span><span class="vermelho">Automação</span><span class="branco">Industrial</span></h1> <!-- Título -->
+<p>DESENVOLVIMENTO DE SISTEMAS INTEGRADOS CLP E SCADA</p> <!-- Subtítulo -->
+</div> <!-- Fecha esquerda -->
+<div class="direita"> <!-- Direita serviços -->
+<div class="titulo-servicos">SELECIONE NOSSOS SERVIÇOS</div> <!-- AGORA CENTRALIZADO EM CIMA DOS BOTÕES -->
+<div class="grid"> <!-- Grade 3x2 -->
+<a href="controle-clp.html" class="card"><span class="ico">⚙️</span><span class="txt">Controle CLP</span></a> <!-- Card 1 -->
+<a href="oit.html" class="card"><span class="ico">🖥️</span><span class="txt">OIT</span></a> <!-- Card 2 -->
+<a href="scada.html" class="card"><span class="ico">📊</span><span class="txt">SCADA</span></a> <!-- Card 3 -->
+<a href="python-e-scada.html" class="card"><span class="ico">🐍</span><span class="txt">Python e<br>SCADA</span></a> <!-- Card 4 -->
+<a href="com-via-radio.html" class="card"><span class="ico">📡</span><span class="txt">Com. Via Rádio</span></a> <!-- Card 5 -->
+<a href="comissionamento.html" class="card"><span class="ico">✅</span><span class="txt">Comissionamento</span></a> <!-- Card 6 -->
+</div> <!-- Fecha grid -->
+</div> <!-- Fecha direita -->
+</div> <!-- Fecha fundo-globo -->
+<div id="fundoPopup" class="fundo-popup" onclick="fecharPopup()"> <!-- Fundo popup -->
+<div class="popup-box" onclick="event.stopPropagation()"> <!-- Caixa -->
+<h3 style="margin:0 0 10px;color:#ff1a1a">💬 Fale no WhatsApp</h3> <!-- Título -->
+<a href="https://wa.me/5563981301747" target="_blank" class="numero">📱 (63) 98130-1747 - Comercial</a> <!-- Número -->
+<a href="https://wa.me/5563981301747?text=Olá%20preciso%20de%20suporte%20técnico" target="_blank" class="numero" style="background:#0a1931">🛠️ Suporte Técnico</a> <!-- Suporte -->
+<button class="btn-fechar" onclick="fecharPopup()">Fechar</button> <!-- Fechar -->
+</div> <!-- Fecha box -->
+</div> <!-- Fecha fundo -->
+<script> // JS
+function abrirPopup(){document.getElementById('fundoPopup').classList.add('ativo')} // Abre popup
+function fecharPopup(){document.getElementById('fundoPopup').classList.remove('ativo')} // Fecha popup
+</script> <!-- Fecha script -->
+</body> <!-- Fecha body -->
+</html>

@@ -1,0 +1,334 @@
+<!DOCTYPE html> <!-- Diz ao navegador que é HTML5 moderno -->
+<html lang="pt-br"> <!-- Inicia HTML e define idioma português Brasil -->
+<head> <!-- Inicia cabeça, configurações invisíveis -->
+  <meta charset="utf-8"> <!-- Permite acentos ç ã é á -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"> <!-- Deixa responsivo no celular -->
+  <title>COMISSIONAMENTO E TESTE - SANTOS SISTEMAS</title> <!-- Título que aparece na aba do navegador -->
+  <style> /* Inicia CSS, parte visual */
+
+    /* ----- 1. CORPO GERAL ----- */
+    body{ /* Estiliza o corpo inteiro da página */
+      margin:0; /* Tira margem branca que navegador coloca */
+      font-family:Arial; /* Define fonte Arial */
+      background:#0a1931; /* Cor de fundo azul escuro padrão */
+      color:#fff; /* Cor da letra branca padrão */
+    } /* Fecha corpo */
+
+    /* ----- 2. TOPO PADRÃO ----- */
+    .topo{ /* Estiliza barra do topo */
+      height:68px; /* Altura da barra 68 pixels */
+      padding:0 30px; /* Espaço interno 0 cima/baixo 30 laterais */
+      display:flex; /* Coloca itens lado a lado */
+      align-items:center; /* Alinha itens no meio vertical */
+      justify-content:center; /* Centraliza conteúdo horizontal */
+      position:absolute; /* Fica por cima, não empurra resto */
+      width:100%; /* Largura 100% da tela */
+      box-sizing:border-box; /* Padding não aumenta largura */
+      z-index:20; /* Camada 20, fica na frente */
+      background:#0a1931; /* Fundo azul escuro */
+    } /* Fecha topo */
+
+    /* ----- 3. LOGO NO MEIO SOBREPONDO ----- */
+    .logo-meio{ /* Div que segura logo + nome */
+      position:absolute; /* Posição solta fora do fluxo */
+      left:50%; /* Vai para 50% da esquerda meio da tela */
+      transform:translateX(-50%); /* Volta metade da própria largura pra centralizar */
+      top:8px; /* Desce 8px pra sobrepor metade barra metade fora igual foto */
+      z-index:30; /* Camada 30 bem na frente de tudo */
+      display:flex; /* Itens um em cima do outro */
+      flex-direction:column; /* Direção coluna */
+      align-items:center; /* Centraliza logo e nome */
+      gap:8px; /* Espaço 8px entre logo e nome */
+      text-decoration:none; /* Tira sublinhado porque é link */
+    } /* Fecha logo-meio */
+    .logo-meio img{ /* Imagem do logo */
+      height:108px; /* Altura 108px grande */
+      width:108px; /* Largura 108px igual altura pra virar círculo */
+      border-radius:50%; /* Arredonda 50% vira círculo */
+      background:#d9d9d9; /* Fundo cinza claro dentro do círculo */
+      padding:4px; /* Espaço 4px entre logo e borda do círculo */
+      object-fit:contain; /* Logo não estica, encaixa sem deformar */
+      box-shadow: 0 0 0 5px #fff, /* Sombra 1 borda branca grossa 5px */
+                  0 0 0 7px #e0e0e0, /* Sombra 2 borda cinza clara 7px */
+                  0 8px 20px rgba(0,0,0,0.6), /* Sombra 3 sombra preta pra baixo 8px blur 20px relevo 3D */
+                  inset 0 2px 5px rgba(255,255,255,0.9); /* Sombra 4 interna brilho branco */
+      border:2px solid #fff; /* Borda final branca 2px */
+    } /* Fecha imagem */
+    .nome-logo{ /* Texto SANTOS SISTEMAS abaixo do logo */
+      font-size:18px; /* Tamanho 18px maior */
+      font-weight:900; /* Peso 900 negrito extra forte */
+      text-transform:uppercase; /* Tudo maiúsculo */
+      color:#fff; /* Cor branca */
+      letter-spacing:2.5px; /* Espaço 2.5px entre letras */
+      text-shadow:0 2px 6px rgba(0,0,0,0.9); /* Sombra preta no texto */
+      white-space:nowrap; /* Não deixa quebrar linha */
+    } /* Fecha nome-logo */
+
+    /* ----- 4. BOTÕES DIREITA COM ANIMAÇÃO ----- */
+    .menu-outro-lado{ /* Container botões contato/whatsapp/orçamento */
+      margin-left:auto; /* Empurra tudo pra direita outro lado do logo */
+      display:flex; /* Botões lado a lado */
+      align-items:center; /* Alinha no meio vertical */
+      gap:20px; /* Espaço 20px entre cada botão */
+    } /* Fecha menu-outro-lado */
+    .menu-outro-lado a.link{ /* Links CONTATO e WHATSAPP */
+      color:#cbd5e1; /* Cor cinza claro */
+      text-decoration:none; /* Tira sublinhado */
+      font-size:12px; /* Tamanho 12px */
+      font-weight:bold; /* Negrito */
+      display:flex; /* Ícone e texto lado a lado */
+      align-items:center; /* Centraliza ícone com texto */
+      gap:5px; /* Espaço 5px entre ícone e texto */
+      cursor:pointer; /* Mãozinha */
+      transition: all 0.3s ease; /* Animação suave 0.3s */
+    } /* Fecha link */
+    .menu-outro-lado a.link:hover{ /* Quando passa mouse em CONTATO/WHATSAPP */
+      transform: scale(1.12) translateY(-3px); /* Aumenta 12% e sobe 3px */
+      color:#fff; /* Fica branco puro */
+      text-shadow:0 0 8px rgba(255,255,255,0.7); /* Brilho branco */
+    } /* Fecha hover link */
+    .btn-orcamento{ /* Botão vermelho ORÇAMENTO */
+      background:#ff1f2a; /* Fundo vermelho */
+      padding:9px 20px; /* Espaço interno 9px cima/baixo 20px lados */
+      border-radius:6px; /* Bordas arredondadas 6px */
+      color:#fff!important; /* Cor branca força */
+      text-decoration:none; /* Sem sublinhado */
+      font-size:12px; /* Tamanho 12px */
+      font-weight:bold; /* Negrito */
+      cursor:pointer; /* Mãozinha */
+      transition: all 0.3s ease; /* Animação suave */
+      display:inline-block; /* Precisa pra transform */
+    } /* Fecha btn-orcamento */
+    .btn-orcamento:hover{ /* Quando passa mouse no ORÇAMENTO */
+      transform: scale(1.12) translateY(-4px); /* Aumenta 12% sobe 4px */
+      background:#ff2f3a; /* Vermelho mais claro */
+      box-shadow:0 10px 25px rgba(255,31,42,0.5); /* Sombra vermelha */
+    } /* Fecha hover orçamento */
+
+    /* ----- 5. BOTÃO VOLTAR ESQUERDA ----- */
+    .btn-voltar{ /* Botão VOLTAR lado esquerdo */
+      position:absolute; /* Posição fixa solta */
+      top:14px; /* 14px do topo */
+      left:20px; /* 20px da esquerda */
+      padding:8px 18px; /* Espaço interno */
+      background:#0033cc; /* Fundo azul */
+      color:#fff; /* Letra branca */
+      text-decoration:none; /* Sem sublinhado */
+      border-radius:20px; /* Bem redondo 20px */
+      font-weight:bold; /* Negrito */
+      font-size:13px; /* Tamanho 13px */
+      z-index:25; /* Camada 25 frente da barra */
+      transition: all 0.3s ease; /* Animação suave */
+    } /* Fecha btn-voltar */
+    .btn-voltar:hover{ /* Quando passa mouse no VOLTAR */
+      transform: scale(1.12) translateY(-3px); /* Aumenta 12% sobe 3px */
+      background:#0022aa; /* Azul mais escuro */
+      box-shadow:0 8px 20px rgba(0,51,204,0.5); /* Sombra azul */
+    } /* Fecha hover voltar */
+
+    /* ----- 6. CONTEÚDO CENTRAL ----- */
+    .conteudo{ /* Caixa central com texto */
+      padding:160px 40px 60px; /* 160px em cima por causa logo grande 40 laterais 60 embaixo */
+      max-width:900px; /* Largura máxima 900px */
+      margin:0 auto; /* 0 cima/baixo auto laterais centraliza */
+      text-align:center; /* Texto centralizado */
+    } /* Fecha conteudo */
+    .conteudo h1{ /* Título COMISSIONAMENTO E TESTE */
+      font-size:32px; /* Tamanho 32px grande */
+      color:#ff1a1a; /* Cor vermelha */
+      letter-spacing:2px; /* Espaço 2px entre letras */
+      margin-bottom:10px; /* Espaço 10px abaixo */
+    } /* Fecha h1 */
+    .conteudo p{ /* Parágrafos */
+      font-size:16px; /* Tamanho 16px normal */
+      color:#cbd5e1; /* Cor cinza claro */
+      line-height:1.6; /* Altura linha 1.6 respirado */
+      margin:12px 0; /* Espaço 12px cima/baixo */
+    } /* Fecha p */
+    .lista-servico{ /* Lista com serviços */
+      text-align:left; /* Texto esquerda dentro */
+      display:inline-block; /* Vira bloco pequeno mas centraliza */
+      margin:20px 0; /* Espaço 20px cima/baixo */
+      background:rgba(255,255,255,0.05); /* Fundo branco transparente 5% */
+      border:1.5px solid #3d5bff; /* Borda azul 1.5px */
+      border-radius:12px; /* Arredondado 12px */
+      padding:20px 30px; /* Espaço interno 20 cima/baixo 30 lados */
+    } /* Fecha lista */
+    .lista-servico li{ /* Cada item da lista */
+      margin:8px 0; /* Espaço 8px cima/baixo entre itens */
+      font-size:14px; /* Tamanho 14px */
+    } /* Fecha li */
+
+    /* ----- 7. PESQUISA NO LUGAR DO BOTÃO VERMELHO ----- */
+    .pesquisa-baixo{ /* Caixa pesquisa embaixo no lugar do botão vermelho */
+      display:flex; /* Input e lupa lado a lado */
+      align-items:center; /* Centraliza vertical */
+      justify-content:center; /* Centraliza horizontal */
+      gap:6px; /* Espaço 6px entre campo e lupa */
+      margin:30px auto 0; /* 30px em cima auto laterais centraliza 0 embaixo */
+      width:320px; /* Largura 320px igual botão vermelho antigo */
+      height:44px; /* Altura 44px igual botão vermelho antigo */
+      background:rgba(255,255,255,0.08); /* Fundo branco transparente 8% */
+      border:1.5px solid #3d5bff; /* Borda azul */
+      border-radius:8px; /* Arredondado 8px igual botão vermelho */
+      padding:5px 8px; /* Espaço interno */
+      box-sizing:border-box; /* Padding não aumenta tamanho */
+      transition: all 0.3s ease; /* Animação suave */
+    } /* Fecha pesquisa-baixo */
+    .pesquisa-baixo:hover{ /* Quando passa mouse na caixa pesquisa */
+      transform: scale(1.08) translateY(-3px); /* Aumenta 8% sobe 3px */
+      border-color:#6d8cff; /* Borda azul clara */
+      box-shadow:0 10px 25px rgba(61,91,255,0.4); /* Sombra azul */
+      background:rgba(255,255,255,0.12); /* Fundo mais claro */
+    } /* Fecha hover pesquisa */
+    .pesquisa-baixo input{ /* Campo onde digita */
+      flex:1; /* Ocupa todo espaço menos lupa */
+      background:transparent; /* Fundo transparente */
+      border:none; /* Sem borda */
+      color:#fff; /* Letra branca */
+      font-size:14px; /* Tamanho 14px */
+      outline:none; /* Tira borda azul quando clica */
+      padding:6px; /* Espaço interno 6px */
+    } /* Fecha input */
+    .pesquisa-baixo input::placeholder{ /* Texto exemplo Pesquisar... */
+      color:#aaa /* Cor cinza claro */
+    } /* Fecha placeholder */
+    .pesquisa-baixo button{ /* Botão lupa 🔍 */
+      background:#0033cc; /* Fundo azul */
+      color:#fff; /* Ícone branco */
+      border:none; /* Sem borda */
+      border-radius:6px; /* Arredondado 6px */
+      padding:8px 14px; /* Tamanho interno */
+      cursor:pointer; /* Mãozinha */
+      font-size:14px; /* Tamanho ícone */
+      transition: all 0.3s ease; /* Animação suave */
+    } /* Fecha button */
+    .pesquisa-baixo button:hover{ /* Quando passa mouse na lupa */
+      background:#0022aa; /* Azul mais escuro */
+      transform: scale(1.1); /* Aumenta 10% */
+    } /* Fecha hover button */
+
+    /* ----- 8. POPUP WHATSAPP ----- */
+    .fundo-popup{ /* Fundo escuro atrás popup */
+      display:none; /* Escondido início */
+      position:fixed; /* Fixo tela toda */
+      top:0;left:0; /* Topo 0 esquerda 0 */
+      width:100%;height:100%; /* 100% tela */
+      background:rgba(0,0,0,0.7); /* Preto 70% transparente */
+      z-index:99; /* Frente tudo */
+      align-items:center; /* Meio vertical */
+      justify-content:center; /* Meio horizontal */
+    } /* Fecha fundo-popup */
+    .fundo-popup.ativo{ /* Quando ativo */
+      display:flex; /* Mostra flex */
+    } /* Fecha ativo */
+    .popup-box{ /* Caixa branca popup */
+      background:#fff; /* Fundo branco */
+      color:#0a1931; /* Texto azul escuro */
+      border-radius:16px; /* Arredondado */
+      padding:25px 30px; /* Espaço interno */
+      width:320px; /* Largura 320px */
+      text-align:center; /* Centro */
+      box-shadow:0 20px 50px rgba(0,0,0,0.5); /* Sombra */
+    } /* Fecha popup-box */
+    .popup-box a.numero{ /* Link número WhatsApp */
+      display:block; /* Bloco */
+      margin:12px 0; /* Espaço 12px */
+      padding:12px; /* Espaço interno */
+      background:#25d366; /* Verde WhatsApp */
+      color:#fff; /* Branco */
+      text-decoration:none; /* Sem sublinhado */
+      border-radius:10px; /* Arredondado */
+      font-weight:bold; /* Negrito */
+    } /* Fecha numero */
+    .btn-fechar{ /* Botão fechar */
+      margin-top:10px; /* Espaço cima */
+      padding:8px 18px; /* Espaço */
+      background:#0a1931; /* Azul escuro */
+      color:#fff; /* Branco */
+      border:none; /* Sem borda */
+      border-radius:20px; /* Redondo */
+      cursor:pointer; /* Mãozinha */
+    } /* Fecha btn-fechar */
+
+  </style> <!-- Fecha CSS -->
+</head> <!-- Fecha head -->
+
+<body> <!-- Inicia corpo visível -->
+
+  <header class="topo"> <!-- Inicia header topo padrão -->
+
+    <a href="index.html" class="btn-voltar">⬅ VOLTAR</a> <!-- Link botão voltar pra index -->
+
+    <a href="index.html" class="logo-meio"> <!-- Link logo meio leva pra index -->
+      <img src="logo.png" alt="SANTOS SISTEMAS"> <!-- Imagem logo arquivo na mesma pasta -->
+      <span class="nome-logo">SANTOS SISTEMAS</span> <!-- Texto nome abaixo do logo -->
+    </a> <!-- Fecha logo-meio -->
+
+    <nav class="menu-outro-lado"> <!-- Nav botões direita -->
+      <a href="contato.html" class="link">📞 CONTATO</a> <!-- AJUSTADO: abre contato.html -->
+      <a class="link" onclick="abrirPopup()">💬 WHATSAPP</a> <!-- AJUSTADO: abre popup -->
+      <a href="orcamento.html" class="btn-orcamento">ORÇAMENTO</a> <!-- AJUSTADO: abre orcamento.html -->
+    </nav> <!-- Fecha nav -->
+
+  </header> <!-- Fecha header topo -->
+
+  <main class="conteudo"> <!-- Inicia main conteúdo principal -->
+
+    <h1>COMISSIONAMENTO E TESTE</h1> <!-- Título principal da página -->
+
+    <p><b style="color:#fff">Garantia de funcionamento real em campo, com testes e validação completa</b></p> <!-- Subtítulo branco negrito -->
+
+    <p>Executamos o <b>COMISSIONAMENTO E TESTE</b> de sistemas de automação industrial, garantindo que tudo funcione conforme projeto.</p> <!-- Parágrafo explicativo -->
+
+    <ul class="lista-servico"> <!-- Inicia lista serviços -->
+      <li>✅ Teste de malha e loop check</li> <!-- Item 1 check -->
+      <li>🔌 Testes de I/O digital e analógico</li> <!-- Item 2 plugue -->
+      <li>⚙️ Validação de lógica de CLP</li> <!-- Item 3 engrenagem -->
+      <li>📊 Testes de supervisório SCADA / IHM</li> <!-- Item 4 gráfico -->
+      <li>📝 Relatório final de comissionamento e start-up assistido</li> <!-- Item 5 relatório -->
+    </ul> <!-- Fecha lista -->
+
+    <p>Programação, manutenção e instalação com testes completos de COMISSIONAMENTO E TESTE para sua planta industrial.</p> <!-- Parágrafo final reforço -->
+
+    <div class="pesquisa-baixo"> <!-- Div pesquisa no lugar do botão vermelho antigo -->
+      <input type="search" id="pesquisa" placeholder="Pesquisar..."> <!-- Campo pesquisa id usado no JS -->
+      <button onclick="buscar()">🔍</button> <!-- Botão lupa chama função buscar() -->
+    </div> <!-- Fecha div pesquisa -->
+
+  </main> <!-- Fecha main conteúdo -->
+
+  <!-- POPUP WHATSAPP -->
+  <div id="fundoPopup" class="fundo-popup" onclick="fecharPopup()"> <!-- Fundo clique fora fecha -->
+    <div class="popup-box" onclick="event.stopPropagation()"> <!-- Caixa popup stopPropagation não fecha ao clicar dentro -->
+      <h3 style="margin:0 0 10px;color:#ff1a1a">💬 Fale no WhatsApp</h3> <!-- Título popup vermelho -->
+      <p style="font-size:13px;color:#555">Escolha um número:</p> <!-- Texto escolha -->
+      <a href="https://wa.me/5563981301747" target="_blank" class="numero">📱 (63) 98130-1747 - Comercial</a> <!-- Link WhatsApp 1 comercial -->
+      <a href="https://wa.me/5563981301747?text=Ol%C3%A1%20preciso%20de%20suporte%20t%C3%A9cnico" target="_blank" class="numero" style="background:#0a1931">🛠️ Suporte Técnico</a> <!-- Link WhatsApp 2 suporte mensagem pronta -->
+      <button class="btn-fechar" onclick="fecharPopup()">Fechar</button> <!-- Botão fechar -->
+    </div> <!-- Fecha popup-box -->
+  </div> <!-- Fecha fundo-popup -->
+
+  <script> // Inicia JavaScript
+    function buscar(){ // Declara função buscar
+      let termo = document.getElementById('pesquisa').value.toLowerCase(); // Pega valor digitado minúsculo
+      if(termo.includes('clp')) location.href='controle-clp.html'; // Se contém clp vai pra clp
+      else if(termo.includes('comissionamento')) location.href='comissionamento.html'; // Se contém comissionamento fica aqui
+      else if(termo.includes('teste')) location.href='comissionamento.html'; // Se contém teste fica aqui também
+      else if(termo.includes('radio')) location.href='com-via-radio.html'; // Se contém radio vai pra radio
+      else if(termo.includes('scada')) location.href='scada.html'; // Se contém scada vai pra scada
+      else if(termo!='') alert('Serviço não encontrado: '+termo); // Se não vazio e não achou mostra alerta
+    } // Fecha função buscar
+    document.getElementById('pesquisa').addEventListener('keydown', function(e){ // Escuta tecla pressionada no campo
+      if(e.key === 'Enter'){ buscar(); } // Se tecla Enter chama buscar()
+    }); // Fecha evento
+    function abrirPopup(){ // Função abrir popup WhatsApp
+      document.getElementById('fundoPopup').classList.add('ativo'); // Adiciona classe ativo mostra popup
+    } // Fecha abrir
+    function fecharPopup(){ // Função fechar popup
+      document.getElementById('fundoPopup').classList.remove('ativo'); // Remove classe ativo esconde popup
+    } // Fecha fechar
+  </script> <!-- Fecha script -->
+
+</body> <!-- Fecha body -->
+</html>
